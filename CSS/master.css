@@ -36,16 +36,39 @@ main{
             flex-direction: column;
             list-style: none;
             padding: 0;
+            gap: 0.6rem;
             li{
                 border: 2px solid #fff;
                 background-color: #fff8;
                 border-radius: 4rem;
-                padding: 1rem;
                 width: 300px;
                 transition: all 0.5s ease-in;
                 &:is(:hover){
-                    background-color: rgb(141, 168, 228);
+                    background-color: rgb(168, 217, 214);
                     transform: scale(1.04);
+                }
+                &:is(:hover) a span{
+                    transform: scale(1.1) rotateZ(360deg);
+                }
+
+                a:is(:link, :visited){
+                    display: flex;
+                    padding: 0.6rem;
+                    text-decoration: none;
+                    gap: 1rem;
+                    color: black;
+                    align-items: center;
+                    span{
+                        background-color: #0009;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: #fff9;
+                        height: 36px;
+                        transition: all 0.4s ease-in-out;
+                        width: 36px;
+                    }
                 }
             }
         }
