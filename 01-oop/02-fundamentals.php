@@ -11,44 +11,50 @@
 <body>
     <main>
         <h1>02-Fundamentals</h1>
-        <section>
-            <figure>
-                <?php
-                class Runner
+        <figure id="runnerFigure">
+            <?php
+            class Runner
+            {
+                //atributes
+                private $name;
+                private $age;
+                private $number;
+                //methods
+                public function __construct($name, $age, $number)
                 {
-                    //atributes
-                    private $name;
-                    private $age;
-                    private $number;
-                    //methods
-                    public function __construct($name, $age, $number)
-                    {
-                        $this->name = $name;
-                        $this->age = $age;
-                        $this->number = $number;
-                    }
-                    public function run()
-                    {
-                        return "🏃‍♂️";
-                    }
-                    public function stop()
-                    {
-                        return "🧍‍♂️";
-                    }
-                    public function jump()
-                    {
-                        return "🤸‍♂️";
-                    }
+                    $this->name = $name;
+                    $this->age = $age;
+                    $this->number = $number;
                 }
-                $runner = new Runner('Radamel', 35, 105);
-                echo $runner->run();
-                echo $runner->jump();
-                echo $runner->stop();
-                echo $runner->run();
-                ?>
-            </figure>
-        </section>
+                public function run()
+                {
+                    echo "🏃‍♂️";
+                }
+                public function jump()
+                {
+                    echo "🤸‍♂️";
+                }
+                public function stop()
+                {
+                    echo "🧍‍♂️";
+                }
+            }
+            $runner = new Runner('Radamel', 35, 105);
+            ?>
+        </figure>
     </main>
+    <script>
+        var runnerFigure = document.getElementById('runnerFigure');
+        var emojis = ["🚶🏼","🏃🏼","🤾🏼","🤸🏼","🏃🏼","🧎🏼"];
+        var index = 0;
+
+        function changeEmoji() {
+            runnerFigure.innerHTML = emojis[index];
+            index = (index + 1) % emojis.length;
+        }
+
+        setInterval(changeEmoji, 150); // Cambiar emoji cada 2 segundos
+    </script>
 </body>
 
 </html>
