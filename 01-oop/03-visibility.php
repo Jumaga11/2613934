@@ -67,40 +67,43 @@
                     // Attributes
                     private $nr; //Number of Rows
                     private $nc; //Number od Columns
-
                     // Methods
                     public function __construct($nr, $nc) {
                         $this->nr = $nr;
                         $this->nc = $nc;
                     }
-
                     public function drawTable() {
                         echo $this->startTable();
                         echo $this->contentTable();
                         echo $this->endTable();
                     }
-
                     private function startTable() {
                         return '<table>';
                     }
-
                     private function contentTable() {
-                        return '<tr>  
-                                    <td></td>
-                                </tr>';
+                        $content = '';
+                        for($i = 0 ; $this -> nr ; $i ++){
+                            $content .= '<tr>';
+                            for($j = 0 ; $j < $this -> nc ; $j++){
+                                $content .= '<td></td>';
+                            }  
+                            $content .= '</tr>';
+                        }
+                        return $content;
                     }
-
                     private function endTable() {
                         return '</table>';
                     }
-
                 }
-
-                $table = new TableMaker(10, 8);
-                $table->drawTable();
+                if($_SERVER["REQUEST_METHOD"]=="POST"){
+                    $nr = $_POST ['nr'];    
+                    $nc = $_POST ['nc'];
+                    $table = new TableMaker($nr, $nc);
+                    $table->drawTable();
+                }  
             ?>
             <h2>Table Maker</h2>
-            <form action="" method="post">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <label>
                 <p>Rows:</p>
                 <input type="range" name="nr" min="1" max="20" step="1" value="1" oninput="o1.value=this.value">
@@ -111,7 +114,7 @@
                 <input type="range" name="nc" min="1" max="20" step="1" value="1" oninput="o2.value=this.value">
                 <output id="o2">1</output>
             </label>
-            <button> Make Table </button>
+            <button type="submit"> Make Table </button>
         </form>
         </section>
     </main>
