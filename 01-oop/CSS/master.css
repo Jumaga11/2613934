@@ -108,8 +108,3 @@ main {
     }
   }
 }
-
-#runnerFigure {
-  font-size: 60px; /* Tamaño inicial del emoji */
-  text-align: center; /* Centrar el emoji */
-}

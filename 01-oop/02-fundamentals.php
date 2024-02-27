@@ -10,51 +10,75 @@
 
 <body>
     <main>
-        <h1>02-Fundamentals</h1>
-        <figure id="runnerFigure">
+        <h1>02- Fundamentals</h1>
+        <section>
             <?php
+
             class Runner
             {
-                //atributes
-                private $name;
-                private $age;
-                private $number;
-                //methods
+                // Attributes
+                public $name;
+                public $age;
+                public $number;
+
+                // Methods
                 public function __construct($name, $age, $number)
                 {
-                    $this->name = $name;
-                    $this->age = $age;
+                    $this->name   = $name;
+                    $this->age    = $age;
                     $this->number = $number;
                 }
+
                 public function run()
                 {
-                    echo "🏃‍♂️";
+                    return "<img src='img/run.gif'>";
                 }
-                public function jump()
-                {
-                    echo "🤸‍♂️";
-                }
+
                 public function stop()
                 {
-                    echo "🧍‍♂️";
+                    return "<img src='img/stop.gif'>";
+                }
+
+                public function jump()
+                {
+                    return "<img src='img/jump.gif'>";
                 }
             }
-            $runner = new Runner('Radamel', 35, 105);
+
+            $runner = new Runner('Usain Bolt', 35, 105);
+
             ?>
-        </figure>
+            <ul>
+                <li>Name: <?= $runner->name ?></li>
+                <li>Age: <?= $runner->age ?></li>
+                <li>Number: <?= $runner->number ?></li>
+            </ul>
+            <figure>
+                <?php
+                /* echo $runner->run();
+                echo $runner->jump();
+                echo $runner->stop(); */
+                ?>
+            </figure>
+            <form action="" method="post">
+                <?php
+                $result=" ";
+                if (isset($_POST['run'])) {
+                    echo "<p id = '$result'>" . $runner->run() . "</p>";
+                }
+                if (isset($_POST['jump'])) {
+                    echo "<p id = '$result'>" . $runner->jump() . "</p>";
+                }
+                if (isset($_POST['stop'])) {
+                    echo "<p id = '$result'>" . $runner->stop() . "</p>";
+                }
+                ?>
+                <button name="run"> Run </button>
+                <button name="jump"> Jump </button>
+                <button name="stop"> Stop </button>
+            </form>
+        </section>
     </main>
-    <script>
-        var runnerFigure = document.getElementById('runnerFigure');
-        var emojis = ["🚶🏼","🏃🏼","🤾🏼","🤸🏼","🏃🏼","🧎🏼"];
-        var index = 0;
-
-        function changeEmoji() {
-            runnerFigure.innerHTML = emojis[index];
-            index = (index + 1) % emojis.length;
-        }
-
-        setInterval(changeEmoji, 150); // Cambiar emoji cada 2 segundos
-    </script>
 </body>
 
 </html>
