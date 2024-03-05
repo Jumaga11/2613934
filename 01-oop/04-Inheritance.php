@@ -6,21 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>04- Inheritance</title>
     <link rel="stylesheet" href="css/master.css">
-    <style>
-        section {
-            background-color: #0009;
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-            padding: 10px;
-
-            h2 {
-                margin: 0;
-            }
-        }
-    </style>
 </head>
 
 <body>
@@ -34,54 +19,67 @@
     <main>
         <h1>04- Inheritance</h1>
         <section>
-            <?php
-            class Pokemon
-            {
-                // Attributes
-                protected $name;
-                protected $type;
-                protected $healt;
-                //protected $image;
+            <div class="pokemon-container">
+                <?php
+                class Pokemon
+                {
+                    // Attributes
+                    protected $name;
+                    protected $type;
+                    protected $healt;
+                    protected $image;
 
-
-                // Methods
-                public function __construct($name, $type, $healt)
-                {
-                    $this->name  = $name;
-                    $this->type  = $type;
-                    $this->healt = $healt;
+                    // Methods
+                    public function __construct($name, $type, $healt, $image)
+                    {
+                        $this->name  = $name;
+                        $this->type  = $type;
+                        $this->healt = $healt;
+                        $this->image = $image;
+                    }
+                    public function attack()
+                    {
+                        return "Attack";
+                    }
+                    public function defense()
+                    {
+                        return  "Defense";
+                    }
+                    public function show()
+                    {
+                        return "<div class='pokemon-card'> <img src='" . $this->image . "' alt='" . $this->name . "'>" . "<div class='pokemon-info neon-text'>" . $this->name . " | " . $this->type . " | " . $this->healt . "</div></div>";
+                    }
                 }
-                public function attack()
+                class Evolve extends Pokemon
                 {
-                    return "Attack";
+                    public function levelUp($name, $type, $healt, $image)
+                    {
+                        $this->name  = $name;
+                        $this->type  = $type;
+                        $this->healt = $healt;
+                        $this->image = $image;
+                    }
                 }
-                public function defense()
-                {
-                    return "Defense";
-                }
-                public function show()
-                {
-                    return $this->name . " | " . $this->type . " | " . $this->healt;
-                }
-            }
-            class Evolve extends Pokemon
-            {
-                public function levelUp($name, $type, $healt)
-                {
-                    $this->name  = $name;
-                    $this->type  = $type;
-                    $this->healt = $healt;
-                }
-            }
-            $pk = new Evolve('Charmander', 'Fire', 150);
-            echo $pk->attack();
-            echo $pk->defense();
-            echo $pk->show();
-            $pk->levelUp('Charmeleon', 'Fire', 250);
-            echo $pk->show();
-            $pk->levelUp('Charizard', 'Fire-Fly', 450);
-            echo $pk->show();
-            ?>
+                $pk = new Evolve('Vegueta Saiyajin', 'Galick', 150, 'img/charmander.png');
+                echo '<div class="pokemon">';
+                echo $pk->show();
+                echo $pk->attack();
+                echo $pk->defense();
+                echo '</div>';
+                $pk->levelUp('Vegueta Saiyajin dios', 'Big Bang', 250, 'img/charmeleon.png');
+                echo '<div class="pokemon">';
+                echo $pk->show();
+                echo $pk->attack();
+                echo $pk->defense();
+                echo '</div>';
+                $pk->levelUp('Vegueta blue', 'Resplandor final', 450, 'img/charizard.png');
+                echo '<div class="pokemon">';
+                echo $pk->show();
+                echo $pk->attack();
+                echo $pk->defense();
+                echo '</div>';
+                ?>
+            </div>
             <h2>Evolve your Pokemon</h2>
         </section>
     </main>
