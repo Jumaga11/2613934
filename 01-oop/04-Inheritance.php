@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -60,19 +60,19 @@
                         $this->image = $image;
                     }
                 }
-                $pk = new Evolve('Vegueta Saiyajin', 'Galick', 150, 'img/charmander.png');
+                $pk = new Evolve('charmander', 'Galick', 150, 'img/charmander.png');
                 echo '<div class="pokemon">';
                 echo $pk->show();
                 echo $pk->attack();
                 echo $pk->defense();
                 echo '</div>';
-                $pk->levelUp('Vegueta Saiyajin dios', 'Big Bang', 250, 'img/charmeleon.png');
+                $pk->levelUp('charmeleon', 'Big Bang', 250, 'img/charmeleon.png');
                 echo '<div class="pokemon">';
                 echo $pk->show();
                 echo $pk->attack();
                 echo $pk->defense();
                 echo '</div>';
-                $pk->levelUp('Vegueta blue', 'Resplandor final', 450, 'img/charizard.png');
+                $pk->levelUp('charizard', 'Resplandor final', 450, 'img/charizard.png');
                 echo '<div class="pokemon">';
                 echo $pk->show();
                 echo $pk->attack();

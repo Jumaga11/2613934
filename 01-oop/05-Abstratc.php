@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>05 - Abstract</title>
+    <link rel="stylesheet" href="CSS/master.css">
 </head>
 
 <body>
@@ -29,14 +30,14 @@
                 protected $conx;
 
                 //methods
-                public function __construct( $dbname,$host = 'localhost', $user = 'root', $pass = '')
+                public function __construct($dbname, $host = 'localhost', $user = 'root', $pass = '')
                 {
                     $this->host = $host;
                     $this->user = $user;
                     $this->pass = $pass;
                     $this->dbname = $dbname;
                 }
-
+                //Método para conectarse a la base de datos
                 public function connect()
                 {
                     try {
@@ -50,11 +51,47 @@
                 }
             }
 
-            class Pokemon extends Database{
+            class Pokemon extends Database
+            {
+                public function getPokemons()
+                {
+                    $sql     = "SELECT * FROM pokemons";
+                    $stmt    = $this->conx->prepare($sql);
+                    $stmt->execute();
+                    $results = $stmt->fetchAll(PDO::FETCH_OBJ);
+                    return $results;
+                }
             }
 
+            //crear una instancia de pokemon  y llamar al método connect
             $db = new Pokemon('adso2613934');
             $db->connect();
+            $pokemons = $db->getPokemons();
+
+            if (count($pokemons) > 0) {
+                echo "<table>";
+                echo "<tr>";
+                echo "<th>ID</th>";
+                echo "<th>Name</th>";
+                echo "<th>Type</th>";
+                echo "<th>Health</th>";
+                echo "<th>Image</th>";
+                echo "</tr>";
+
+                foreach ($pokemons as $pokemon) {
+                    echo "<tr>";
+                    echo "<td>" . $pokemon->id . "</td>";
+                    echo "<td>" . $pokemon->name . "</td>";
+                    echo "<td>" . $pokemon->type . "</td>";
+                    echo "<td>" . $pokemon->health . "</td>";
+                    echo "<td><img src='img/images/ico-pk.png" . $pokemon->image . "' alt='" . $pokemon->name . "'></td>"; 
+                    echo "</tr>";
+                }
+
+                echo "</table>";
+            } else {
+                echo "No pokemons found.";
+            }
             ?>
         </section>
     </main>
