@@ -6,18 +6,19 @@
     --ff-body: "Sahitya", serif;
     --ff-special: "Roboto Flex", sans-serif;
 
-    --cl-primary: #00ffff;
-    --cl-second: #ffffff;
+    --cl-primary: #ffffff;
+    --cl-second: #00FFFF;
     --cl-third: #ff5de2;
     --cl-fourth: #1c1c2c;
     --cl-fiventh: #000000;
     --cl-sixth: #f43c04;
     --cl-seventh: #0c0c24;
-
 }
+
 /* - - - - - - - - - */
 /* G E N E R A L */
 /* - - - - - - - - - */
+
 body{
     background-color: var(--cl-primary);
     font-family: var(--ff-body);
@@ -28,7 +29,7 @@ body{
     align-items: center;
     min-height: 100vh;
     main {
-        background: url(../images/1.bg-main.png) no-repeat;
+        background: url(../images/views/1.bg-main.png) no-repeat;
         height: 800px;
         overflow: hidden;
         width: 400px;
@@ -39,3 +40,38 @@ body{
 /* 01 - W E L C O M E */
 /* - - - - - - - - - */
 /*  */
+main.welcome{
+    header{
+        display: flex;
+        justify-content: center;    align-items: center;    
+        margin-block: 3.1rem;
+    }
+    section.slider{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 1rem;
+    }
+    footer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        a:is(:link, :visited){
+            background: url(../images/btn.png) no-repeat center;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 4rem;
+            transition: all 0.4s ease-in;
+            width: 300px;
+        }
+        a:is(:hover){
+            background: url(../images/btn-hover.png) no-repeat center;
+            transform: scale(1.02) translateY(-5px);
+        }
+        a:is(:active){
+            background: url(../images/btn-active.png) no-repeat center;
+        }
+    }
+}
