@@ -21,6 +21,19 @@
 }
 
 /* - - - - - - - - - */
+/* P R E L O A D */
+/* - - - - - - - - - */
+
+body:after {
+    position: absolute;
+    height: 0;
+    overflow: hidden;
+    width: 0;
+    z-index: -1;
+    content: url();
+}
+
+/* - - - - - - - - - */
 /* G E N E R A L */
 /* - - - - - - - - - */
 
@@ -39,7 +52,13 @@ body {
         height: 800px;
         overflow: hidden;
         width: 400px;
+    }
 
+    main.frame{
+        background: url(../images/views/2.bg-frame.png) no-repeat;
+        height: 800px;
+        overflow: hidden;
+        width: 400px;
     }
 }
 
@@ -95,9 +114,9 @@ main.welcome {
                 }
             }
 
-            button.owl-prev:hover {
+            /* button.owl-prev:hover {
                 transform: scales(1.1) translateX(-4px);
-            }
+            } */
 
             button.owl-next {
                 span {
@@ -105,9 +124,9 @@ main.welcome {
                 }
             }
 
-            button.owl-next:hover {
+            /* button.owl-next:hover {
                 transform: scales(1.1) translateX(4px);
-            }
+            } */
         }
 
         div.owl-dots {
@@ -175,6 +194,7 @@ main.welcome {
             transition: all 0.2s ease-in;
             justify-content: center;
             align-items: center;*/
+            
             border: .25em solid var(--glow-color);
             padding: 1em 3em;
             color: var(--glow-color);
