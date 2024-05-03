@@ -21,21 +21,21 @@
 }
 
 /* - - - - - - - - - */
-/* P R E L O A D */
+/* G E N E R A L */
 /* - - - - - - - - - */
 
+/* - - - - - - - - - */
+/* P R E L O A D */
+/* - - - - - - - - - */
 body:after {
     position: absolute;
     height: 0;
     overflow: hidden;
     width: 0;
     z-index: -1;
-    content: url();
+    content: url(../images/btn-enter-hover.png),
+            url(../images/btn-enter-active.png);
 }
-
-/* - - - - - - - - - */
-/* G E N E R A L */
-/* - - - - - - - - - */
 
 body {
     background-color: var(--cl-primary);
@@ -52,13 +52,7 @@ body {
         height: 800px;
         overflow: hidden;
         width: 400px;
-    }
 
-    main.frame{
-        background: url(../images/views/2.bg-frame.png) no-repeat;
-        height: 800px;
-        overflow: hidden;
-        width: 400px;
     }
 }
 
@@ -93,7 +87,7 @@ main.welcome {
             justify-content: space-between;
             margin: 0.3rem;
 
-            button {
+            button{
                 transition: transform 0.2s ease-in;
 
                 span {
@@ -110,23 +104,23 @@ main.welcome {
 
             button.owl-prev {
                 span {
-                    background: url(../images/btn-prev.svg) no-repeat center;
+                    background: url(../images/btn-prev.svg) no-repeat center /contain;
                 }
             }
 
-            /* button.owl-prev:hover {
-                transform: scales(1.1) translateX(-4px);
-            } */
+            button.owl-prev:hover {
+                transform: scale(1.1) translateX(-4px);
+            }
 
             button.owl-next {
                 span {
-                    background: url(../images/btn-next.svg) no-repeat center;
+                    background: url(../images/btn-next.svg) no-repeat center / contain;
                 }
             }
 
-            /* button.owl-next:hover {
-                transform: scales(1.1) translateX(4px);
-            } */
+            button.owl-next:hover {
+                transform: scale(1.1) translateX(4px);
+            }
         }
 
         div.owl-dots {
@@ -194,7 +188,6 @@ main.welcome {
             transition: all 0.2s ease-in;
             justify-content: center;
             align-items: center;*/
-            
             border: .25em solid var(--glow-color);
             padding: 1em 3em;
             color: var(--glow-color);
