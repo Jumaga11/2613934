@@ -1,3 +1,4 @@
+
 /* - - - - - - - - - - - - - - */
 /*       V A R I A B L E S     */
 /* - - - - - - - - - - - - - - */
@@ -67,11 +68,10 @@ body {
                 width: 45px;
                 height: 100px;
 
-
                 .line {
                     fill: none;
                     transition: stroke-dasharray 400ms,
-                        stroke-dashoffset 400ms;
+                                stroke-dashoffset 400ms;
                     stroke: var(--cl-third);
                     stroke-width: 6;
                     stroke-linecap: round;
@@ -136,8 +136,9 @@ body {
 
             a:is(:link, :visited) {
                 background: url(../images/btn.png) no-repeat center;
-                color: var(--txt-color);
+                color: var(--cl-primary);
                 font-size: 20px;
+                font-family: var(--ff-heading);
                 font-weight: 400;
                 height: 60px;
                 display: flex;
@@ -145,19 +146,56 @@ body {
                 align-items: center;
                 gap: 0.6rem;
                 padding-left: 20px;
-                margin-top: 1.2rem;
-                transition: all 0.4s ease-in;
+                margin-top: 1.5rem;
+                transition: all 0.15s ease-in;
                 text-decoration: none;
-                width: 300px;
+                width: 300px; 
             }
 
+            /* a:is(:link, :visited) {
+                align-items: center;
+                border-radius: 1em;
+                background:url(../images/btn.png);
+                background-color: var(--btn-color);
+                border: var(--glow-color);
+                box-shadow: 0 0 1em .25em var(--glow-color),
+                            0 0 90em 1em var(--glow-spread-color),
+                            inset 0 0 .75em .25em var(--glow-color);
+                            text-shadow: 0 0 .5em var(--glow-color);
+                color: var(--glow-color);
+                display:flex;
+                font-size: 20px;
+                font-family: var(--ff-heading);
+                font-weight: 400;
+                gap: 0.6rem;
+                height: 60px;
+                justify-content: start;
+                margin-top: 2.5rem;
+                outline: none;
+                padding-left: 20px;
+                position: relative;
+                transition: all 0.3s ease-in;
+                text-decoration: none;
+                width: 300px;
+            } */
+
             a:is(:hover) {
-                background: url(../images/bnt-hover.png) no-repeat center;
-                transform: scale(1.02) translateY(-4px);
+                /* background: url(../images/bnt-active.png) no-repeat center;
+                transform: scale(1.10) translateY(3px); */
+                transform: scale(1.02) translateY(-5px);
+                border-radius: 13px;
+                color: var(--cl-primary);
+                background-color: var(--glow-color);
+                box-shadow: 0 0 1em .25em var(--glow-color),
+                    0 0 4em 2em var(--glow-spread-color),
+                    inset 0 0 .75em .25em var(--glow-color);
             }
 
             a:is(:active) {
                 background: url(../images/bnt-active.png) no-repeat center;
+                box-shadow: 0 0 0.6em .25em var(--glow-color),
+                0 0 2.5em 2em var(--glow-spread-color),
+                inset 0 0 .5em .25em var(--glow-color);
             }
         }
     }
@@ -341,7 +379,7 @@ main.catalogue {
         justify-content: space-around;
         align-items: center;
         margin-block: 2.2rem;
-        margin-bottom: 1rem;
+        margin-bottom: 0rem;
     }
 
     section.scroll {
@@ -380,13 +418,14 @@ main.catalogue {
         h2 {
             display: flex;
             margin-left: 4.6rem;
-            margin-top: 2rem;
+            margin-top: 0.6rem;
             font-family: var(--ff-body);
             font-size: 18px;
             align-items: center;
             color: var(--cl-primary);
             gap: 0.5rem;
         }
+
 
         figure {
             figcaption {
@@ -398,44 +437,22 @@ main.catalogue {
                 align-items: center;
             }
         }
-        
+
         a:is(:link, :visited) {
-            /* border: .1em solid var(--glow-color);
-            color: var(--glow-color);
-            font-size: 16px;
-            background-color: var(--btn-color);
-            box-shadow: 0 0 1em .5em var(--glow-color),
-            0 0 1em 1em var(--glow-spread-color),
-            inset 0 0 .75em .25em var(--glow-color);
-            text-shadow: 0 0 .5em var(--glow-color); */
-            margin-top: 1rem;
             margin-bottom: 3rem;
             transition: all 0.3s;
             text-decoration: none;
-            
         }
 
         a:is(:hover) {
-            transform: scale(1.20) translateY(-5px);
-            /* color: var(--btn-color);
-            border-radius: 15px;
-            box-shadow: 0 0 1em .1em var(--glow-color),
-                0 0 1em 1em var(--glow-spread-color),
-                inset 0 0 .75em .25em var(--glow-color); */
+            transform: scale(1.20) translateY(5px);
         }
-
-        /* a:is(:active) {
-            box-shadow: 0 0 0.6em .25em var(--glow-color),
-                0 0 2.5em 2em var(--glow-spread-color),
-                inset 0 0 .5em .25em var(--glow-color);
-        } */
 
     }
 
     div.owl-carousel {
-        height: 195px;
+        height: 180px;
         margin-block: 0rem;
-
 
         div.owl-item {
             display: flex;
@@ -443,8 +460,8 @@ main.catalogue {
             margin-block: 1rem;
 
             img.slide {
-                width: 120px;
-                height: 120px;
+                width: 125px;
+                height: 125px;
             }
         }
 
@@ -470,7 +487,7 @@ main.catalogue {
 
             button:is(:hover) {
                 background-color: transparent;
-            } 
+            }
 
             button.owl-prev {
                 span {
@@ -480,17 +497,17 @@ main.catalogue {
 
             button.owl-prev:hover {
                 transform: scale(1) translateX(-4px);
-            } 
+            }
 
             button.owl-next {
                 span {
                     background: url(../images/btn-next.svg) no-repeat center / contain;
                 }
-            } 
+            }
 
             button.owl-next:hover {
                 transform: scale(1) translateX(4px);
-            } 
+            }
         }
     }
-}
+} 
