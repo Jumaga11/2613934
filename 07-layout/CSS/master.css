@@ -510,4 +510,69 @@ main.catalogue {
             }
         }
     }
-} 
+}
+
+main.View-game {
+    background: url(../images/views/2.bg-frame.png) no-repeat;
+    height: 800px;
+    overflow: hidden;
+    width: 400px;
+
+    header {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-block: 2.2rem;
+        margin-bottom: 1rem;
+
+        /* h1 {
+            font-family: var(--ff-heading);
+            font-size: 24px;
+            color: var(--cl-primary);
+        } */
+    }
+
+    section {
+        align-items: center;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
+
+        article {
+            width: 251px;
+            gap: 1rem;
+            display: flex;
+            flex-direction: column;
+
+            div.row {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                
+
+                div.column {
+                    h4 {
+                        font-family: var(--ff-special);
+                        font-size: 16px;
+                        color: var(--cl-primary);
+                    }
+
+                    p {
+                        font-family: var(--ff-body);
+                        color: var(--cl-primary);
+                        font-size: 16px;
+                        line-height: 1.2rem;
+                        text-align: justify;
+                        &.price {
+                            color: var(--btn-color);
+                            font-size: 36px;
+                            font-weight: 400;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
