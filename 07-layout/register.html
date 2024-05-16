@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameApp - Register</title>
+    <link rel="stylesheet" href="CSS/reset.css">
+    <link rel="stylesheet" href="CSS/fonts.css">
+    <link rel="stylesheet" href="CSS/master.css">
+</head>
+
+<body>
+    <main class="register">
+        <header>
+            <a href="catalogue.html" class="btn-back">
+                <img src="images/btn-back.svg" alt="Back">
+            </a>
+            <img src="images/tittle-register.png" alt="">
+            <svg class="btn-burger" viewBox="0 0 100 100" width="80">
+                <path class="line top"
+                    d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20" />
+                <path class="line middle" d="m 70,50 h -40" />
+                <path class="line bottom"
+                    d="m 30,67 h 40 c 0,0 8.5,0.149796 8.5,-8.5 0,-8.649796 -8.5,-8.5 -8.5,-8.5 h -20 v 20" />
+            </svg>
+        </header>
+
+        <nav class="nav">
+            <!--<img src="images/tittle-menu.svg" alt="Menu" class="tittle-menu">-->
+            <menu>
+                <a href="register.html">
+                    <img src="images/ico-register.png" alt="">
+                    Register
+                </a>
+                <a href="login.html">
+                    <img src="images/ico-login.png" alt="">
+                    Login
+                </a>
+                <a href="catalogue.html">
+                    <img src="images/ico-catalogue.svg" alt=""> Catalogue
+                </a>
+            </menu>
+        </nav>
+
+        <section>
+            <form action="" class="register" method="post">
+                <div>
+                    <img src="images/profile-picture.png" alt="photo">
+                </div>
+
+                <h3>
+                    <img src="images/icon-user.svg" alt="">
+                    Full Name
+                </h3>
+                <input type="text" placeholder="Full Name" id="" name="name">
+                <h3>
+                    <img src="images/icon-email.svg" alt="">
+                    Email
+                </h3>
+                <input type="email" placeholder="Example@user.com" id="" name="email">
+                <h3>
+                    <img src="images/icon-password.svg" alt="">
+                    Password
+                </h3>
+                <input type="password" placeholder="*********" id="" name="password">
+                <h3>
+                    <img src="images/icon-phone.svg" alt="">
+                    Phone Number
+                </h3>
+                <input type="text" placeholder="123456789" id="" name="cellphone">
+            </form>
+            <footer>
+                <a href="catalogue.html">
+                    <img class="btn-register" src="images/register.png" alt="btn-register">
+                </a>
+            </footer>
+        </section>
+    </main>
+
+    <script src="JS/jquery-3.7.1.min.js"></script>
+    <script>
+
+        //------------------------
+        $('header').on('click', '.btn-burger', function () {
+            $(this).toggleClass('active')
+            $('.nav').toggleClass('active')
+        })
+        //------------------------
+
+    </script>
+</body>
+
+</html>
