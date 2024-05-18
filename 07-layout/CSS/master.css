@@ -98,6 +98,12 @@ body {
             }
         }
 
+        section.scroll {
+            scrollbar-width: none;
+            overflow-y: scroll;
+            height: 700px;
+        }
+
         /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 - - - - -  03 M E N U   H A M B U R G U E S A - - - - - - - 
 - - - - - - - - - - - - - - - - - -  - - - - - - - - - - */
@@ -356,10 +362,7 @@ main.catalogue {
     }
 
     section.scroll {
-        scrollbar-width: none;
-        overflow-y: scroll;
-        height: 600px;
-
+        
         form {
             display: flex;
             justify-content: center;
@@ -486,7 +489,7 @@ main.catalogue {
 }
 
 /* - - - - - - - - - - - - - - - - - -*/
-/*       2.1 - V I E W  G A M E        */
+/*       2.1 - V I E W  G A M E       */
 /* - - - - - - - - - - - - - - - - - -*/
 
 main.View-game {
@@ -590,7 +593,7 @@ main.View-game {
 }
 
 /*- - - - - - - - - - - - - - - - - - -*/
-/*- - -  3.1  M E N U  L O G I N - - - */
+/*            0 3 L O G I N            */
 /*- - - - - - - - - - - - - - - - - - -*/
 
 main.login {
@@ -611,7 +614,7 @@ main.login {
         justify-content: space-around;
         align-items: center;
         margin-block: 24px;
-        margin-bottom: -12px;
+        margin-bottom: 4.5rem;
 
         /* h1 {
             font-family: var(--ff-heading);
@@ -643,8 +646,9 @@ main.login {
                     color: var(--cl-second);
                     font-family: var(--ff-body);
                     font-size: 20px;
-                    gap: 1rem;
                     
+                    gap: 10px;
+                    margin-bottom: -10px;
                 }
     
                 input {
@@ -681,6 +685,7 @@ main.register {
     height: 800px;
     overflow: hidden;
     width: 400px;
+    
 
     header {
         display: flex;
@@ -699,48 +704,62 @@ main.register {
 
     section {
 
-        div {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+        
+        form {
+            padding-bottom:60px;
 
-        h3 {
-            font-family: var(--ff-body);
-            font-size: 20px;
-            color: var(--cl-primary);
-            font-style: normal;
-            font-weight: 100;
-            margin-top: 15px;
-
-            img {
+            div {
+                display: flex;
                 align-items: center;
                 justify-content: center;
-                margin-bottom: 5px;
-                margin-left: 4.3rem;
             }
-        }
+    
+            h3 {
+                font-family: var(--ff-body);
+                font-size: 20px;
+                color: #666;
+                font-style: normal;
+                font-weight: 100;
+                margin-top: 15px;
+    
+                img {
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 5px;
+                    margin-left: 4.3rem;
+                    
+                }
+            }
+    
+            input {
+                height: 60px;
+                width: 300px;
+                border-radius: 15px;
+                border: none;
+                display: flex;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: -2px;
+                padding: 30px;
+                font-family: var(--ff-special);
+                font-size: 16px;
+                font-weight: 500;
+                font-style: italic;
+                outline: none;
+                background-color: rgba(255, 255, 255, 0.1);
+                text-decoration-color: #ffffff;
+            }
 
-        input {
-            height: 60px;
-            width: 300px;
-            border-radius: 15px;
-            border: none;
-            display: flex;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: -2px;
-            padding: 30px;
-            font-family: var(--ff-special);
-            font-size: 16px;
-            font-weight: 500;
-            font-style: italic;
-            outline: none;
-            opacity: 10%;
-            text-decoration-color: #ffffff;
-        }
+            input::placeholder {
+                color: var(--cl-primary);    
+            }
 
-        footer {
+            input:active, input:focus{
+                background-image: url(../images/input-active.png);
+                color: var(--cl-seventh);
+                font-weight: 500;
+            }
+
             a:is(:link, :visited) {
                 background: url(../images/btn3.png) no-repeat;
                 width: 308px;
@@ -748,7 +767,7 @@ main.register {
                 display: flex;
                 margin-right: auto;
                 margin-left: auto;
-                margin-top: 21px;
+                margin-top: 35px;
                 justify-content: center;
                 align-items: center;
                 transition: all 0.15s ease-in;
@@ -769,11 +788,6 @@ main.register {
                     0 0 2.5em 2em var(--glow-spread-color),
                     inset 0 0 .5em .25em var(--glow-color);
             }
-
-            /* .btn-register {
-                width: 91px;
-                height: 25px;
-            } */
         }
     }
 }
