@@ -45,25 +45,27 @@
         <section>
             <form action="dashboard.html" method="get">
                 <div class="form-group">
-                    <label for="">
-                        <img src="images/icon-email.svg" alt="">
+                    <h3>
+                        <img src="images/icon-email.svg" alt="" >
                         Email:
-                    </label>
-                    <input type="email" name="email" placeholder="Example@user.com">
+                    </h3>
+                    <input type="email" name="email" placeholder="Example@user.com" autocomplete="off" required>
                 </div>
                 <div class="form-group">
-                    <label for="">
-                        <img src="images/icon-email.svg" alt="">
+                    <h3>
+                        <img src="images/icon-password.svg" alt="">
                         Password:
-                    </label>
-                    <img class="ico-eye" src="images/view-open.svg" alt="">
-                    <input type="password" name="password" placeholder="jsxcjshadgjkgc">
+                    </h3>
+                    <div class="password-field">
+                        <input type="password" autocomplete="off" name="password" id="" required />
+                        <img class="ico-eye" src="images/view-open.svg" />
+                    </div>
                 </div>
                 <div class="form-group">
                     <button submit="">
                         <img src="images/btn-login.png" alt="login">
-                        <a href="">Forgot your psassword ?</a>
                     </button>
+                    <a href="">forgot your password ?</a>
                 </div>
             </form>
         </section>
@@ -71,33 +73,43 @@
 
     <script src="JS/jquery-3.7.1.min.js"></script>
     <script>
-
-        //------------------------
+        //------------------------MENU HAMBURGUESA
         $('header').on('click', '.btn-burger', function () {
             $(this).toggleClass('active')
             $('.nav').toggleClass('active')
         })
-        //------------------------
-        $togglePass = false 
-        $('header').on('click', '.btn-burger', function () {
-            !$togglePass ? $(this).next().attr('type', 'text') : $(this).next().attr('type', 'password')
-            !$togglePass ? $(this).attr('src', 'images/view-open.svg') : $(this).attr('src', 'images/view-close.svg')
-
-        })
-
+        //------------------------FUNCIONALIDAD BLUR EN EL NAVEGADOR PARA EL INPUT
+        $(document).ready(function() {
+            $('input').on('focus', function() {
+                $(this).css('color', 'var(--cl-seventh)');
+            });    
+            $('input').on('blur', function() {
+                $(this).css('color', 'var(--cl-primary)');
+            });
+        });
+        //------------------------CAMBIO DE COLOR DEL BOTON DE VIEW-EYE EN EL INPUT DE PASSWORD
+        $(document).ready(function() {
+            // Cambia el icono del ojo cuando el campo de entrada de la contraseña está enfocado
+            $('.password-field input').focus(function() {
+                $('.ico-eye').attr('src', 'images/view-open2.svg');
+            });
         
-        /* // Obtén los elementos del DOM
-        var password = document.querySelector('#password');
-        var togglePassword = document.querySelector('#toggle-password');
-
-        togglePassword.addEventListener('click', function (e) {
-            // Cambia el tipo de input
-            var type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-            password.setAttribute('type', type);
-            // Cambia el icono del ojo
-            this.classList.toggle('fa-eye-slash');
-        }); */
-
+            // Cambia el icono del ojo cuando el campo de entrada de la contraseña pierde el foco
+            $('.password-field input').blur(function() {
+                $('.ico-eye').attr('src', 'images/view-open.svg');
+            });
+        
+            // Cambia el tipo de entrada del campo de contraseña cuando se hace clic en el icono del ojo
+            $('.ico-eye').click(function() {
+                var inputType = $('.password-field input').attr('type');
+                
+                if (inputType == 'password') {
+                    $('.password-field input').attr('type', 'text');
+                } else {
+                    $('.password-field input').attr('type', 'password');
+                }
+            });
+        });
     </script>
 </body>
 
