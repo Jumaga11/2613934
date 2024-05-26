@@ -879,9 +879,78 @@ main.login {
 }
 
 /*- - - - - - - - - - - - - - - - - - -*/
-/*       4.1 - M E N U  L O G I N      */
+/*    4.1 - D A S H B O A R D  N A V   */
 /*- - - - - - - - - - - - - - - - - - -*/
-main.menuLogin {}
+main.dashboard,
+main.myProfile,
+main.users,
+main.addUser,
+main.showUser,
+main.editUser,
+main.deleteUser,
+main.category,
+main.addCategory,
+main.showCategory,
+main.editCategory,
+main.deleteCategory,
+main.games,
+main.addGames,
+main.showGames,
+main.editGames,
+main.deleteGames {
+    nav.nav {
+        align-items: center;
+        gap: 0.5rem;
+
+        figure.avatar {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: -20px;
+
+            .border {
+                position: absolute;
+                top: -0px;
+            }
+
+            .mask {
+                mask-image: url(../images/mask-menu.png);
+                mask-repeat: no-repeat;
+                mask-position: center top;
+                object-fit: cover;
+                align-self: center;
+                position: relative;
+                height: 281.2px;
+                width: 270.34px;
+                margin-bottom: -10px;
+            }
+        }
+
+        h3 {
+            color: var(--cl-primary);
+            font-family: var(--ff-body);
+            font-size: 20px;
+            font-weight: bold;
+            font-style: normal;
+            text-align: center;
+        }
+
+        h4 {
+            background: url(../images/btn-active.png) no-repeat center;
+            height: 33px;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            display: flex;
+            font-family: var(--ff-body);
+            color: var(--cl-primary);
+            font-size: 16px;
+            font-weight: normal;
+            margin-top: 10px;
+        }
+    }
+}
 
 /*- - - - - - - - - - - - - - - - - - -*/
 /*       05 - D A S H B O A R D        */
