@@ -580,6 +580,12 @@ main.register {
     overflow: hidden;
     width: 400px;
 
+    .btn-back {
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+
     header {
         display: flex;
         justify-content: space-around;
@@ -632,7 +638,7 @@ main.register {
             h3 {
                 font-family: var(--ff-body);
                 font-size: 19px;
-                color: rgb(255, 255, 255, 0.5);
+                color: rgb(255, 255, 255, 0.9);
                 font-weight: normal;
                 letter-spacing: 0.1px;
                 margin-top: 15px;
@@ -955,6 +961,7 @@ main.deleteGames {
 /*- - - - - - - - - - - - - - - - - - -*/
 /*       05 - D A S H B O A R D        */
 /*- - - - - - - - - - - - - - - - - - -*/
+
 main.dashboard {
     background: url(../images/views/2.bg-frame.png) no-repeat;
     height: 800px;
@@ -1055,3 +1062,155 @@ main.dashboard {
         }
     }
 }
+
+/*- - - - - - - - - - - - - - - - - - -*/
+/*       5.1 - M Y  P R O F I L E      */
+/*- - - - - - - - - - - - - - - - - - -*/
+
+main.myProfile {
+    background: url(../images/views/2.bg-frame.png) no-repeat;
+    height: 800px;
+    overflow: hidden;
+    width: 400px;
+
+    .btn-back {
+        visibility: visible;
+        pointer-events: all;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-block: 24px;
+        margin-bottom: 2rem;
+    }
+
+    section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+
+        figure.avatar {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: -20px;
+
+            .border {
+                position: absolute;
+                top: -0px;
+            }
+
+            .mask {
+                mask-image: url(../images/mask-menu.png);
+                mask-repeat: no-repeat;
+                mask-position: center top;
+                object-fit: cover;
+                align-self: center;
+                position: relative;
+                height: 281.2px;
+                width: 270.34px;
+                margin-bottom: -31px;
+            }
+        }
+
+        h2 {
+            color: var(--cl-primary);
+            font-family: var(--ff-body);
+            font-size: 26px;
+            font-weight: bold;
+            font-style: normal;
+            text-align: center;
+        }
+
+        span.email {
+            margin-top: -20px;
+
+            b {
+                font-family: var(--ff-special);
+                font-weight: 100;
+                font-style: italic;
+                font-size: 16px;
+                color:var(--cl-primary);             
+            }
+        }
+
+        span.role {
+            background: url(../images/btn-active.png) no-repeat center;
+            margin-bottom: 10px;
+            margin-top: -12px;
+
+            img {
+                display: flex;
+                padding-top: 6px;
+                padding-right: 12px;
+            }
+
+            b {
+                font-family: var(--ff-body);
+                color: var(--cl-primary);
+                font-size: 16px;
+                font-weight: 100;
+            }
+        }
+
+        div.grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.2rem;
+            margin-top: 10px;
+
+            span {
+                background: url(../images/span.png) no-repeat center;
+
+                img {
+                    padding-left: 5px
+                };
+                
+                b{
+                    font-family: var(--ff-special);
+                    font-size: 16px;
+                    font-style: italic;
+                    color: var(--cl-primary);
+                    font-weight: 100;
+                }
+            }
+        }
+
+        span {
+            color: var(--color-first);            
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 0.6rem;
+            padding-left: 0.6rem;
+            font-size: 16px;
+            font-weight: 400;
+            width: 170px;
+        }
+    }
+}
+
+/*- - - - - - - - - - - - - - - - - - -*/
+/*          06 - U S E R S             */
+/*- - - - - - - - - - - - - - - - - - -*/
+
+/*- - - - - - - - - - - - - - - - - - -*/
+/*      6.1 - A D D  U S E R S         */
+/*- - - - - - - - - - - - - - - - - - -*/
+
+/*- - - - - - - - - - - - - - - - - - -*/
+/*      6.2 - S H O W  U S E R S       */
+/*- - - - - - - - - - - - - - - - - - -*/
+
+/*- - - - - - - - - - - - - - - - - - -*/
+/*      6.3 - E D I T  U S E R S       */
+/*- - - - - - - - - - - - - - - - - - -*/
+
+/*- - - - - - - - - - - - - - - - - - -*/
+/*    6.4 - D E L E T E  U S E R S     */
+/*- - - - - - - - - - - - - - - - - - -*/

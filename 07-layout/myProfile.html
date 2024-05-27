@@ -4,19 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AppGame - Dashboard</title>
+    <title>GameApp - My Profile</title>
     <link rel="stylesheet" href="CSS/fonts.css">
     <link rel="stylesheet" href="CSS/master.css">
     <link rel="stylesheet" href="CSS/reset.css">
 </head>
 
 <body>
-    <main class="dashboard">
+    <main class="myProfile">
         <header>
             <a href="javascript:;" class="btn-back">
                 <img src="images/btn-back.svg" alt="Back">
             </a>
-            <img src="images/tittle-dashboard.png" alt="logo" class="logo-top">
+            <img src="images/tittles/myProfile.png" alt="logo" class="logo-top">
             <svg class="btn-burger" viewBox="0 0 100 100" width="80">
                 <path class="line top"
                     d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20" />
@@ -27,7 +27,7 @@
         </header>
 
         <nav class="nav">
-            <figure class="avatar" >
+            <figure class="avatar">
                 <img class="mask" src="images/Profile-pictures/Jeremy Springfield.jpg" alt="Photo">
                 <img class="border" src="images/border-menu.png" alt="border">
             </figure>
@@ -47,46 +47,53 @@
         </nav>
 
         <section>
-            <div class="tarjet">
-                <div class="icon">
-                    <img src="images/ico-mod-users.png" alt="">
-                    20 rows
-                </div>
-                <div class="text">
-                    <h3>Module USERS</h3>
-                </div>
-                <div class="btn">                    
-                    <a href="users.html">view</a>
-                </div>
+            <figure class="avatar" >
+                <img class="mask" src="images/Profile-pictures/Jeremy Springfield.jpg" alt="Photo">
+                <img class="border" src="images/border-menu.png" alt="border">
+            </figure>
+            <h2>Jeremy Springfield</h2>
+            
+            <span class="email">
+                <b>Jeremias@gmail.com</b>
+            </span>
+            
+            <span class="role">
+                <img src="images/ico-user-myProfile.svg" alt="role">
+                <b>Admin</b>
+            </span>
+            <div class="edit">
+                <img src="images/ico-edit-myProfile.png" alt="">    
             </div>
 
-            <div class="tarjet">
-                <div class="icon">
-                    <img src="images/ico-mod-categories.png" alt="">
-                    6 rows
-                </div>
-                <div class="text">
-                    <h3>Module CATEGORIES</h3>
-                </div>
-                <div class="btn">
-                    <a href="categories.html">view</a>
-                </div>
-            </div>
-
-            <div class="tarjet">
-                <div class="icon">
-                    <img src="images/ico-mod-games.png" alt="">
-                    40 rows
-                </div>
-                <div class="text">
-                    <h3>Module GAMES</h3>
-                </div>
-                <div class="btn">
-                    <a href="games.html">view</a>
-                </div>
+            <div class="grid">
+                <span class= "data data-id">
+                    <img src="images/ico-user-myProfile2.svg" alt="">
+                    <b>1.053.849.706</b>
+                </span>
+                <span class= "data data-addres">
+                    <img src="images/ico-user-myProfile2.svg" alt="">
+                    <b>str 16A # 3-64</b>
+                </span>
+                <span class= "data data-phone-number">
+                    <img src="images/ico-user-myProfile2.svg" alt="">
+                    <b>123456789</b>
+                </span>
+                <span class= "data data-birth-date">
+                    <img src="images/ico-user-myProfile2.svg" alt="">
+                    <b>13/05/1995</b>
+                </span>
+                <span class= "data data-gender">
+                    <img src="images/ico-user-myProfile2.svg" alt="">
+                    <b>Male</b>
+                </span>
+                <span class= "data data-status">
+                    <img src="images/ico-user-myProfile2.svg" alt="">
+                    <b>Active</b>
+                </span>
             </div>
         </section>
     </main>
+
     <script src="JS/jquery-3.7.1.min.js"></script>
     <script>
         //------------------------MENU HAMBURGUESA
@@ -97,4 +104,3 @@
     </script>
 </body>
 
-</html>
