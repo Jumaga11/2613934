@@ -1199,6 +1199,67 @@ main.myProfile {
 /*          06 - U S E R S             */
 /*- - - - - - - - - - - - - - - - - - -*/
 
+main.users {
+    background: url(../images/views/2.bg-frame.png) no-repeat;
+    height: 800px;
+    overflow: hidden;
+    width: 400px;
+
+    .btn-back {
+        visibility: visible;
+        pointer-events: all;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-block: 24px;
+        margin-bottom: -1rem;
+    }
+
+    section {
+        padding-bottom: 60px;
+
+        div.area {
+            border: solid 1px white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        a:is(:link, :visited) {
+            background: url(../images/btn-4.png) no-repeat center;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.15s ease-in;
+            width: 125px;
+            margin-top: 38px;
+            img {
+                padding-bottom: 10px;
+            }
+        }
+
+        a:is(:hover) {
+            transform: scale(1.02) translateY(-5px);
+            border-radius: 20px;
+            background-color: var(--glow-color);
+            box-shadow: 0 0 1em .25em var(--glow-color),
+                0 0 1.1em 1em var(--glow-spread-color),
+                inset 0 0 .75em .25em var(--glow-color);
+        }
+
+        a:is(:active) {
+            background: url(../images/bnt-active.png) no-repeat center;
+            box-shadow: 0 0 0.6em .25em var(--glow-color),
+                0 0 2.5em 2em var(--glow-spread-color),
+                inset 0 0 .5em .25em var(--glow-color);
+        }
+    }
+}
+
 /*- - - - - - - - - - - - - - - - - - -*/
 /*      6.1 - A D D  U S E R S         */
 /*- - - - - - - - - - - - - - - - - - -*/
