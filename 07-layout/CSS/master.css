@@ -1228,7 +1228,7 @@ main.users {
             align-items: center;
         }
 
-        a:is(:link, :visited) {
+        a.add:is(:link, :visited) {
             background: url(../images/btn-4.png) no-repeat center;
             height: 60px;
             display: flex;
@@ -1242,7 +1242,7 @@ main.users {
             }
         }
 
-        a:is(:hover) {
+        a.add:is(:hover) {
             transform: scale(1.02) translateY(-5px);
             border-radius: 20px;
             background-color: var(--glow-color);
@@ -1251,11 +1251,48 @@ main.users {
                 inset 0 0 .75em .25em var(--glow-color);
         }
 
-        a:is(:active) {
+        a.add:is(:active) {
             background: url(../images/bnt-active.png) no-repeat center;
             box-shadow: 0 0 0.6em .25em var(--glow-color),
                 0 0 2.5em 2em var(--glow-spread-color),
                 inset 0 0 .5em .25em var(--glow-color);
+        }
+
+        article.record {
+            background: url(../images/Background-user.png) no-repeat center;
+            display: flex;
+            align-items: center;
+            position: relative;
+            gap: 0.6rem;
+            width: 305px;
+            height: 95px;
+
+            figure.avatar {
+                position: relative;
+                padding-left: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+                .border {
+                    position: absolute;
+                    left: 5px;
+                    top: -4px;
+                }
+
+                .mask {
+                    mask-image: url(../images/Group\ 22.svg);
+                    mask-repeat: no-repeat;
+                    mask-position: center top;
+                    object-fit: cover;
+                    align-self: center;
+                    position: relative;
+                    width: 66px;
+                    outline: 30px solid #000;
+                    height: auto;
+
+                }
+            }
         }
     }
 }
