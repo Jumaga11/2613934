@@ -574,7 +574,8 @@ main.viewGame {
 /*- - - - - - - - - - - - - - - - - - -*/
 /*       03 - R E G I S T E R          */
 /*- - - - - - - - - - - - - - - - - - -*/
-main.register {
+main.register,
+main.addUser {
     background: url(..//images/views/2.bg-frame.png) no-repeat;
     height: 800px;
     overflow: hidden;
@@ -584,8 +585,12 @@ main.register {
         visibility: hidden;
         pointer-events: none;
     }
-
-
+    
+    .btn-back-2 {
+        visibility: visible;
+        pointer-events: all;
+    }
+    
     header {
         display: flex;
         justify-content: space-around;
@@ -595,7 +600,6 @@ main.register {
     }
 
     section {
-
         form {
             padding-bottom: 60px;
 
@@ -727,6 +731,37 @@ main.register {
             }
 
             .btn-register:active {
+                background: url(../images/bnt-active.png) no-repeat center;
+                box-shadow: 0 0 0.6em .25em var(--glow-color),
+                    0 0 2.5em 2em var(--glow-spread-color),
+                    inset 0 0 .5em .25em var(--glow-color);
+            }
+
+            .btn-add {
+                background: url(../images/btn-4.png) no-repeat center;
+                border: none;
+                width: 125px;
+                height: 60px;
+                display: flex;
+                margin-right: auto;
+                margin-left: auto;
+                text-align: center;
+                margin-top: 35px;
+                justify-content: center;
+                padding-top: 16px;
+                transition: all 0.15s ease-in;
+            }
+
+            .btn-add:is(:hover) {
+                transform: scale(1.02) translateY(-5px);
+                border-radius: 20px;
+                background-color: var(--glow-color);
+                box-shadow: 0 0 1em .25em var(--glow-color),
+                    0 0 1.1em 1em var(--glow-spread-color),
+                    inset 0 0 .75em .25em var(--glow-color);
+            }
+    
+            .btn-add:is(:active) {
                 background: url(../images/bnt-active.png) no-repeat center;
                 box-shadow: 0 0 0.6em .25em var(--glow-color),
                     0 0 2.5em 2em var(--glow-spread-color),
@@ -1134,7 +1169,7 @@ main.myProfile {
                 font-weight: 100;
                 font-style: italic;
                 font-size: 16px;
-                color:var(--cl-primary);             
+                color: var(--cl-primary);
             }
         }
 
@@ -1168,9 +1203,11 @@ main.myProfile {
 
                 img {
                     padding-left: 5px
-                };
-                
-                b{
+                }
+
+                ;
+
+                b {
                     font-family: var(--ff-special);
                     font-size: 16px;
                     font-style: italic;
@@ -1181,7 +1218,7 @@ main.myProfile {
         }
 
         span {
-            color: var(--color-first);            
+            color: var(--color-first);
             height: 40px;
             display: flex;
             align-items: center;
@@ -1222,7 +1259,6 @@ main.users {
         padding-bottom: 60px;
 
         div.area {
-            border: solid 1px white;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -1237,6 +1273,8 @@ main.users {
             transition: all 0.15s ease-in;
             width: 125px;
             margin-top: 38px;
+            margin-bottom: 6px;
+
             img {
                 padding-bottom: 10px;
             }
@@ -1263,9 +1301,12 @@ main.users {
             display: flex;
             align-items: center;
             position: relative;
+            align-items: center;
             gap: 0.6rem;
             width: 305px;
             height: 95px;
+            margin-block: 4px;
+            transition: transform 0.3s ease-in-out;
 
             figure.avatar {
                 position: relative;
@@ -1273,26 +1314,80 @@ main.users {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                
+
                 .border {
                     position: absolute;
-                    left: 5px;
-                    top: -4px;
+                    left: 11.5px;
+                    top: -5px;
                 }
 
                 .mask {
                     mask-image: url(../images/Group\ 22.svg);
                     mask-repeat: no-repeat;
-                    mask-position: center top;
                     object-fit: cover;
+                    top: -6px;
                     align-self: center;
                     position: relative;
                     width: 66px;
                     outline: 30px solid #000;
                     height: auto;
-
                 }
             }
+
+            article.record:hover {
+                transform: scale(1.1) !important;
+            }
+
+            aside {
+                h3 {
+                    font-family: var(--ff-body);
+                    color: var(--cl-primary);
+                    font-style: normal;
+                    font-size: 16px;
+                    font-weight: 100;
+                    position: absolute;
+                    top: 18px;
+                }
+
+                h4 {
+                    font-family: var(--ff-body);
+                    font-size: 16px;
+                    font-style: normal;
+                    font-size: 16px;
+                    font-weight: 100;
+                    color: var(--cl-primary);
+                    opacity: 50%;
+                    position: absolute;
+                    top: 45px;
+                }
+            }
+
+            figure.actions {
+                position: absolute;
+                background: url(../images/bg-background-user.png) no-repeat center;
+                display: flex;
+                right: 8px;
+                align-items: center;
+                justify-content: space-around;
+                height: 30px;
+                width: 127px;
+                bottom: 16px;
+
+                a:is(:link, :visited) {
+                    transition: all 0.2s ease-in;
+                    opacity: 0.7;
+                    text-decoration: none;
+                    transform: scale(0.9);
+                }
+                a:is(:hover) {
+                    opacity: 1;
+                    transform: scale(1.05);
+                }
+            }
+        }
+
+        article.record:nth-child(even) {
+            background: url(../images/Background-user2.png) no-repeat center;
         }
     }
 }
