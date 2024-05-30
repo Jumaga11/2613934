@@ -13,10 +13,10 @@
 <body>
     <main class="editUser">
         <header>
-            <a href="users.html" class="btn-back-2">
+            <a href="categories.html" class="btn-back-2">
                 <img src="../images/btn-back.svg" alt="Back">
             </a>
-            <img src="../images/tittles/edit-tittle.png" alt="">
+            <img src="../images/tittles/add-tittle.png" alt="">
             <svg class="btn-burger" viewBox="0 0 100 100" width="80">
                 <path class="line top"
                     d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20" />
@@ -48,50 +48,59 @@
 
         <section class="scroll">
             <form action="users.html" class="register" method="get">
-                
-                <div class="form-group">
+
+                <!-- <div class="form-group">
                     <div class="border" style="background-image: url('images/border-photo.svg');">
                         <div class="mask"></div>
                         <input id="photo" type="file">
                     </div>
-                </div>
-                
+                </div> -->
 
                 <h3>
-                    <img src="../images/icon-user.svg" alt="">
-                    Full Name
+
                 </h3>
-                <input type="text" autocomplete="off" placeholder="Write your full name" id="" name="name" required>
-                
+                <input type="text" autocomplete="off" placeholder="Name of category" id="" name="name" required>
                 <h3>
-                    <img src="../images/icon-email.svg" alt="">
-                    Email
+
                 </h3>
-                <input type="email" autocomplete="off" placeholder="Example@user.com" id="" name="email" required>
-                
+                <input type="" autocomplete="off" placeholder="Description" id="" name="name" required>
+
                 <h3>
-                    <img src="../images/icon-password.svg" alt="">
-                    Password
+                    <img src="../images/ico-category.svg" alt="">
+                    Games
                 </h3>
                 <div class="password-field">
-                    <input type="password" autocomplete="off" name="password" id="" required />
-                    <img class="ico-eye" src="../images/view-open.svg" />
+                    <input type="text" autocomplete="off" placeholder="God of war" name="password" id="" required />
+                    <img class="ico-eye" src="../images/ico-delete.svg" />
+                </div>
+                <div class="password-field">
+                    <input type="text" autocomplete="off" placeholder="Game of trhones" name="password" id=""
+                        required />
+                    <img class="ico-eye" src="../images/ico-delete.svg" />
+                </div>
+                <div class="password-field">
+                    <input type="text" autocomplete="off" placeholder="Fifa 25" name="password" id="" required />
+                    <img class="ico-eye" src="../images/ico-delete.svg" />
+                </div>
+                <div class="password-field">
+                    <input type="text" autocomplete="off" placeholder="Call of Duty" name="password" id=""
+                        required />
+                    <img class="ico-eye" src="../images/ico-delete.svg" />
+                </div>
+                <div class="password-field">
+                    <input type="text" autocomplete="off" placeholder="Cobflict desert" name="password" id=""
+                        required />
+                    <img class="ico-eye" src="../images/ico-delete.svg" />
+                </div>
+                <div class="password-field">
+                    <input type="text" autocomplete="off" placeholder="Cobflict desert" name="password" id=""
+                        required />
+                    <img class="ico-eye" src="../images/ico-delete.svg" />
                 </div>
                 
-                <h3>
-                    <img src="../images/icon-phone.svg" alt="">
-                    Phone Number
-                </h3>
-                <input type="text" autocomplete="off" id="" name="cellphone" required>
-                
-                <h3>
-                    <img src="../images/ico-date.svg" alt="">
-                    Birth Date
-                </h3>
-                <input type="text" placeholder="dd / mm / aaaa" id="" name="" required>
 
                 <button type="submit" class="btn-save">
-                    <img src="../images/tittles/save.png" alt="btn-register">
+                    <img src="../images/tittles/+ add.png" alt="btn-register">
                 </button>
             </form>
         </section>
@@ -105,49 +114,28 @@
             $('.nav').toggleClass('active')
         })
         //------------------------REDIRIGIR A USERS SIN ENVIAR EL FORMULARIO
-        $(document).ready(function() {
-            $('.btn-register').on('click', function(event) {
+        $(document).ready(function () {
+            $('.btn-save').on('click', function (event) {
                 event.preventDefault();
-                window.location.href = 'users.html';
+                window.location.href = 'categories.html';
             });
         });
         //------------------------FUNCIONALIDAD BLUR EN EL NAVEGADOR PARA EL INPUT
-        $(document).ready(function() {
-            $('input').on('focus', function() {
+        $(document).ready(function () {
+            $('input').on('focus', function () {
                 $(this).css('color', 'var(--cl-seventh)');
-            });    
-            $('input').on('blur', function() {
+            });
+            $('input').on('blur', function () {
                 $(this).css('color', 'var(--cl-primary)');
             });
         });
         //------------------------CAMBIO DE COLOR DEL BOTON DE VIEW-EYE EN EL INPUT DE PASSWORD
-        $(document).ready(function() {
-            // Cambia el icono del ojo cuando el campo de entrada de la contraseña está enfocado
-            $('.password-field input').focus(function() {
-                $('.ico-eye').attr('src', '../images/view-open2.svg');
-            });
         
-            // Cambia el icono del ojo cuando el campo de entrada de la contraseña pierde el foco
-            $('.password-field input').blur(function() {
-                $('.ico-eye').attr('src', '../images/view-open.svg');
-            });
-        
-            // Cambia el tipo de entrada del campo de contraseña cuando se hace clic en el icono del ojo
-            $('.ico-eye').click(function() {
-                var inputType = $('.password-field input').attr('type');
-                
-                if (inputType == 'password') {
-                    $('.password-field input').attr('type', 'text');
-                } else {
-                    $('.password-field input').attr('type', 'password');
-                }
-            });
-        });
         //------------------------CAMBIO DE FOTO DE PERFIL 
-        $(document).ready(function() {
-            $('#photo').change(function() {
+        $(document).ready(function () {
+            $('#photo').change(function () {
                 var reader = new FileReader();
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     // Establece la imagen de la clase "mask" como el fondo de la imagen de la clase "border"
                     $('.border').css('background-image', 'url(' + e.target.result + ')');
                     $('.border').css('background-size', 'cover');
@@ -155,7 +143,7 @@
                 reader.readAsDataURL(this.files[0]);
             });
         });
-        
+
     </script>
 </body>
 

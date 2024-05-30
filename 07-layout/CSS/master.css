@@ -382,7 +382,6 @@ main.catalogue {
             gap: 0.5rem;
         }
 
-
         figure {
             figcaption {
                 color: var(--cl-primary);
@@ -403,7 +402,6 @@ main.catalogue {
         a:is(:hover) {
             transform: scale(1.20) translateY(5px);
         }
-
     }
 
     div.owl-carousel {
@@ -575,7 +573,8 @@ main.viewGame {
 /*       03 - R E G I S T E R          */
 /*- - - - - - - - - - - - - - - - - - -*/
 main.register,
-main.addUser {
+main.addUser,
+main.editUser {
     background: url(..//images/views/2.bg-frame.png) no-repeat;
     height: 800px;
     overflow: hidden;
@@ -585,12 +584,12 @@ main.addUser {
         visibility: hidden;
         pointer-events: none;
     }
-    
+
     .btn-back-2 {
         visibility: visible;
         pointer-events: all;
     }
-    
+
     header {
         display: flex;
         justify-content: space-around;
@@ -706,6 +705,7 @@ main.addUser {
                 font-weight: 800;
                 transition: all 0.30s ease-in;
             }
+            
 
             .btn-register {
                 background: url(../images/btn3.png) no-repeat;
@@ -760,14 +760,45 @@ main.addUser {
                     0 0 1.1em 1em var(--glow-spread-color),
                     inset 0 0 .75em .25em var(--glow-color);
             }
-    
+
             .btn-add:is(:active) {
                 background: url(../images/bnt-active.png) no-repeat center;
                 box-shadow: 0 0 0.6em .25em var(--glow-color),
                     0 0 2.5em 2em var(--glow-spread-color),
                     inset 0 0 .5em .25em var(--glow-color);
             }
-        }
+
+            .btn-save {
+                background: url(../images/btn-4.png) no-repeat center;
+                border: none;
+                width: 125px;
+                height: 60px;
+                display: flex;
+                margin-right: auto;
+                margin-left: auto;
+                text-align: center;
+                margin-top: 35px;
+                justify-content: center;
+                padding-top: 20px;
+                transition: all 0.15s ease-in;
+            }
+
+            .btn-save:is(:hover) {
+                transform: scale(1.02) translateY(-5px);
+                border-radius: 20px;
+                background-color: var(--glow-color);
+                box-shadow: 0 0 1em .25em var(--glow-color),
+                    0 0 1.1em 1em var(--glow-spread-color),
+                    inset 0 0 .75em .25em var(--glow-color);
+            }
+
+            .btn-save:is(:active) {
+                background: url(../images/bnt-active.png) no-repeat center;
+                box-shadow: 0 0 0.6em .25em var(--glow-color),
+                    0 0 2.5em 2em var(--glow-spread-color),
+                    inset 0 0 .5em .25em var(--glow-color);
+            }
+        } 
     }
 }
 
@@ -923,15 +954,16 @@ main.login {
 /*    4.1 - D A S H B O A R D  N A V   */
 /*- - - - - - - - - - - - - - - - - - -*/
 main.dashboard,
+main.viewGame,
 main.myProfile,
 main.users,
 main.addUser,
-main.showUser,
+main.showUsers,
 main.editUser,
 main.deleteUser,
 main.category,
 main.addCategory,
-main.showCategory,
+main.showCategories,
 main.editCategory,
 main.deleteCategory,
 main.games,
@@ -1236,7 +1268,8 @@ main.myProfile {
 /*          06 - U S E R S             */
 /*- - - - - - - - - - - - - - - - - - -*/
 
-main.users {
+main.users,
+main.showUsers {
     background: url(../images/views/2.bg-frame.png) no-repeat;
     height: 800px;
     overflow: hidden;
@@ -1253,12 +1286,23 @@ main.users {
         align-items: center;
         margin-block: 24px;
         margin-bottom: -1rem;
+
+    }
+
+    .show {
+        margin-bottom: 1rem;
     }
 
     section {
         padding-bottom: 60px;
 
         div.area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        div.area-2 {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -1379,6 +1423,7 @@ main.users {
                     text-decoration: none;
                     transform: scale(0.9);
                 }
+
                 a:is(:hover) {
                     opacity: 1;
                     transform: scale(1.05);
@@ -1407,3 +1452,143 @@ main.users {
 /*- - - - - - - - - - - - - - - - - - -*/
 /*    6.4 - D E L E T E  U S E R S     */
 /*- - - - - - - - - - - - - - - - - - -*/
+
+main.showCategories {
+    background: url(../images/views/2.bg-frame.png) no-repeat;
+    height: 800px;
+    overflow: hidden;
+    width: 400px;
+
+    header {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-block: 2.2rem;
+        margin-bottom: 0rem;
+    }
+
+    section.scroll {
+
+        form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: -0.5rem;
+
+            input {
+                border: none;
+                background: url(../images/ico-filter.svg) no-repeat 253px center,
+                    url(../images/bg-input-filter.png) no-repeat center / contain;
+                color: var(--cl-primary);
+                font-size: 20px;
+                font-family: var(--ff-heading);
+                height: 100px;
+                outline: none;
+                text-indent: 16px;
+                text-align: center;
+                width: 300px;
+                margin-top: -1rem;
+
+                &::placeholder {
+                    opacity: 0.5;
+                }
+            }
+        }
+    }
+
+    article {
+        h2 {
+            display: flex;
+            margin-left: 4.6rem;
+            margin-top: 0.6rem;
+            font-family: var(--ff-body);
+            font-size: 18px;
+            align-items: center;
+            color: var(--cl-primary);
+            gap: 0.5rem;
+        }
+
+        figure {
+            figcaption {
+                color: var(--cl-primary);
+                font-size: 18px;
+                margin-bottom: 1.5rem;
+                margin-top: 0rem;
+                text-align: center;
+                align-items: center;
+            }
+        }
+
+        a:is(:link, :visited) {
+            margin-bottom: 3rem;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        a:is(:hover) {
+            transform: scale(1.20) translateY(5px);
+        }
+    }
+
+    
+    div.owl-carousel {
+        height: 180px;
+        top: 15px;
+        
+        div.owl-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-block: 5px;
+            
+            img.slide {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        div.owl-nav {
+            position: relative;
+            top: -70px;
+            display: flex;
+            justify-content: space-between;
+
+            button {
+                transition: transform 0.2s ease-in;
+            }
+
+            span {
+                display: flex;
+                color: transparent;
+                height: 34px;
+                width: 34px;
+                margin-left: 2rem;
+                margin-right: 2rem;
+            }
+
+            button:is(:hover) {
+                background-color: transparent;
+            }
+
+            button.owl-prev {
+                span {
+                    background: url(../images/btn-prev.svg) no-repeat center / contain;
+                }
+            }
+
+            button.owl-prev:hover {
+                transform: scale(1) translateX(-4px);
+            }
+
+            button.owl-next {
+                span {
+                    background: url(../images/btn-next.svg) no-repeat center / contain;
+                }
+            }
+
+            button.owl-next:hover {
+                transform: scale(1) translateX(4px);
+            }
+        }
+    }
+}
