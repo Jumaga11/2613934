@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('games', function (Blueprint $table) {
             $table  ->  id();
             $table  ->  string('tittle');
-            $table  ->  string('image');
+            $table  ->  string('image') -> default('no-photo.png');
             $table  ->  string('developer');
-            $table  ->  date('release date');
+            $table  ->  date('releasedate');
             $table  ->  unsignedBigInteger('category_id');
             $table  ->  foreign('category_id')
                     ->  references('id')
