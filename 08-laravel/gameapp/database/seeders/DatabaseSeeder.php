@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             GameSeeder::class
         ]);
 
-        // User::factory(10)->create();
+        User::factory()->count(100)->create();
         /* User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
