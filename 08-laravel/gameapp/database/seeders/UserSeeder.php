@@ -38,15 +38,15 @@ class UserSeeder extends Seeder
 
         //Using DB Array
         DB::table('users')->insert([
-            'document'  => 123456897,
-            'fullname'  => 'Alana Lahana',
-            'gender'    => 'Female',
-            'birthdate' => '1990-12-21',
-            'phone'     => '3105879640',
-            'email'     => 'jumaga@hotmail.com',
-            'password'  => bcrypt('123456'),
-            'role'      => 'customer',
-            'created_at'=> now(),
+            'document'   => 123456897,
+            'fullname'   => 'Alana Lahana',
+            'gender'     => 'Female',
+            'birthdate'  => '1990-12-21',
+            'phone'      => '3105879640',
+            'email'      => 'jumaga@hotmail.com',
+            'password'   => bcrypt('123456'),
+            'role'       => 'customer',
+            'created_at' => now(),
             'updated_at' => now()
         ]);
     }

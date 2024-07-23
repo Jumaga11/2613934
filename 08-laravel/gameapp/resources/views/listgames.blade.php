@@ -16,6 +16,7 @@
                 <th>Releade Date</th>
                 <th>Category</th>
                 <th>User</th>
+                <th>Created at</th>
             </tr>
         </thead>
         <tbody>
@@ -27,6 +28,7 @@
                     <td>{{ $game -> releasedate}}</td>
                     <td>{{ $game -> category->name}}</td>
                     <td>{{ $game -> user->fullname}}</td>
+                    <td>{{ $game -> created_at->diffForHumans()}}</td>
                 </tr>
             @endforeach
         </tbody>
