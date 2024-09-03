@@ -41,7 +41,9 @@
         <div class="tarjet">
             <div class="icon">
                 <img src="images/ico-mod-users.png" alt="">
-                20 rows
+                <span class="count-rows">
+                    {{ App\Models\User::count() }}
+                </span>
             </div>
             <div class="text">
                 <h3>Module USERS</h3>
@@ -54,7 +56,9 @@
         <div class="tarjet">
             <div class="icon">
                 <img src="images/ico-mod-categories.png" alt="">
-                6 rows
+                <span class="count-rows">
+                    {{ App\Models\Category::count() }}
+                </span>
             </div>
             <div class="text">
                 <h3>Module CATEGORIES</h3>
@@ -67,7 +71,9 @@
         <div class="tarjet">
             <div class="icon">
                 <img src="images/ico-mod-games.png" alt="">
-                40 rows
+                <span class="count-rows">
+                    {{ App\Models\Game::count() }}
+                </span>
             </div>
             <div class="text">
                 <h3>Module GAMES</h3>

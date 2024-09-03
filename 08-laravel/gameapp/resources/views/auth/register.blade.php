@@ -91,7 +91,7 @@
                 <x-input-error :messages="$errors->get('phone')" class="mt-2" />
             </div>
 
-            <div>
+            {{-- <div>
                 <h3>
                     <img src="../images/icon-user.svg" alt="">
                     <x-input-label for="role" :value="__('Role')" />
@@ -99,7 +99,7 @@
                 <x-text-input id="role" class="block mt-1 w-full" type="text" name="role" :value="old('role')"
                     required autofocus autocomplete="role" />
                 <x-input-error :messages="$errors->get('role')" class="mt-2" />
-            </div>
+            </div> --}}
 
             <div>
                 <h3>

@@ -4,7 +4,7 @@
 
 @section('content')
     <header>
-        <a href="../dashboard.html" class="btn-back">
+        <a href="../dashboard" class="btn-back">
             <img src="../images/btn-back.svg" alt="Back">
         </a>
         <img src="../images/tittles/users-tittle.png" alt="logo" class="logo-top">
@@ -18,53 +18,115 @@
 
     <nav class="nav">
         <figure class="avatar">
-            <img class="mask" src="../images/Profile-pictures/Jeremy Springfield.jpg" alt="Photo">
-            <img class="border" src="../images/border-menu.png" alt="border">
+            <img class="mask" src= "{{ Auth::user()->photo}}" alt="Photo">
+            <img class="border" src= "{{ asset('images/border-menu.png') }}"" alt="border">
         </figure>
-        <h3>Jeremy Springfield</h3>
-        <h4>Admin</h4>
+        <h3>{{ Auth::user()->fullname }}</h3>
+        <h4>{{ Auth::user()->role }}</h4>
         <menu>
-            <a href="../myProfile.html">
-                <img src="../images/ico-profile.svg" alt=""> Profile
+            <a href="myProfile">
+                <img src="images/ico-profile.svg" alt=""> Profile
             </a>
-            <a href="../dashboard.html">
-                <img src="../images/ico-dashboard.svg" alt=""> Dashboard
+            <a href="../dashboard">
+                <img src="images/ico-dashboard.svg" alt=""> Dashboard
             </a>
-            <a href="../index.html">
-                <img src="../images/ico-logout.svg" alt=""> LogOut
+            <a href="javascript:;" onclick="logout.submit();">
+                <img src=" {{ asset('../images/ico-logout.svg') }}" alt=""> LogOut
             </a>
+            <form action=" {{ route('logout') }}" id="logout" method="POST">@csrf</form>
         </menu>
     </nav>
 
     <section class="scroll">
         <div class="area">
-            <a class="add" href="addUser.html">
-                <img src="{{asset('images/tittles/+ add.png')}}" alt="Add">
+            <a class="add" href="{{ url('users/create') }}">
+                <img src="{{ asset('images/tittles/+ add.png') }}" alt="Add">
             </a>
+            <div class="options">
+                <a href="{{ url('export/users/pdf')}}">
+                    pdf
+                </a>
+                <a href="{{ url('export/users/excel')}}">
+                    excel
+                </a>
 
-            @foreach ($users as $user)
-                <article class="record">
-                    <figure class="avatar">
-                        <img class="mask" src="{{ $user->photo }}" alt="Photo">
-                        <img class="border" src="{{asset('../images/border-mask-card.png')}}" alt="border">
-                    </figure>
-                    <aside>
-                        <h3>{{$user->fullname}}</h3>
-                        <h4>{{$user->role}}</h4>
-                    </aside>
-                    <figure class="actions">
-                        <a href="showUser.html">
-                            <img src="../images/ico-view.svg" alt="viewUser">
-                        </a>
-                        <a href="editUser.html">
-                            <img src="../images/ico-edit.svg" alt="viewUser">
-                        </a>
-                        <a href="#">
-                            <img src="../images/ico-delete.svg" alt="viewUser">
-                        </a>
-                    </figure>
-                </article>
-            @endforeach
+                <input name="qsearch" id="qsearch" type="text">
+            </div>
+            ;extension=gd
+
+            <div id="list">
+                @foreach ($users as $user)
+                    <article class="record">
+                        <figure class="avatar">
+                            <img class="mask" src="{{ $user->photo }}" alt="Photo">
+                            <img class="border" src="{{ asset('images/border-mask-card.png') }}" alt="border">
+                        </figure>
+                        <aside>
+                            <h3>{{ $user->fullname }}</h3>
+                            <h4>{{ $user->role }}</h4>
+                        </aside>
+                        <figure class="actions">
+                            <a href="{{ url('users/show') }}">
+                                <img src="../images/ico-view.svg" alt="viewUser">
+                            </a>
+                            <a href="editUser.html">
+                                <img src="../images/ico-edit.svg" alt="viewUser">
+                            </a>
+                            <a href="javascript:;" class="delete" data-fullname="{{ $user->fullname }}">
+                                <img src="../images/ico-delete.svg" alt="Delete">
+                            </a>
+                            <form action="{{ url('users/' . $user->id) }}" method="POST" style="display: none">
+                                @csrf
+                                @method('delete')
+                            </form>
+                        </figure>
+                    </article>
+                @endforeach
+            </div>
         </div>
     </section>
+@endsection
+
+@section('js')
+    <script>
+        //------------------------MENU HAMBURGUESA---------------
+        $('header').on('click', '.btn-burger', function() {
+            $(this).toggleClass('active')
+            $('.nav').toggleClass('active')
+        })
+        //--------------------------------------------------------
+        $('figure').on('click', '.delete', function() {
+            $fullname = $(this).attr('data-fullname')
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You want to eliminate: " + $fullname,
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#ff5de2"
+                toast: true,
+                cancelButtonColor: "#ff5de2"
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $(this).next().submit()
+                }
+            })
+        })
+        //--------------------------------------------------------
+        $('#qsearch').on('keyup', function() {
+            $query = $(this).val()
+            $token = $('input[name=_token]').val()
+            $model = 'users'
+
+            $.post($model + '/search', {
+                    q: $query,
+                    _token: $token
+                },
+                function(data) {
+                    $('#list').html(data)
+                }
+            )
+            //console.log($(this).val())
+        });
+    </script>
 @endsection
