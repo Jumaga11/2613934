@@ -4,7 +4,7 @@
 
 @section('content')
     <header>
-        <a href="../dashboard" class="btn-back">
+        <a href="{{ url('dashboard') }}" class="btn-back">
             <img src="../images/btn-back.svg" alt="Back">
         </a>
         <img src="../images/tittles/users-tittle.png" alt="logo" class="logo-top">
@@ -16,49 +16,51 @@
         </svg>
     </header>
 
-    <nav class="nav">
-        <figure class="avatar">
-            <img class="mask" src= "{{ Auth::user()->photo}}" alt="Photo">
-            <img class="border" src= "{{ asset('images/border-menu.png') }}"" alt="border">
-        </figure>
-        <h3>{{ Auth::user()->fullname }}</h3>
-        <h4>{{ Auth::user()->role }}</h4>
-        <menu>
-            <a href="myProfile">
-                <img src="images/ico-profile.svg" alt=""> Profile
-            </a>
-            <a href="../dashboard">
-                <img src="images/ico-dashboard.svg" alt=""> Dashboard
-            </a>
-            <a href="javascript:;" onclick="logout.submit();">
-                <img src=" {{ asset('../images/ico-logout.svg') }}" alt=""> LogOut
-            </a>
-            <form action=" {{ route('logout') }}" id="logout" method="POST">@csrf</form>
-        </menu>
-    </nav>
+    @auth
+        <nav class="nav">
+            <figure class="avatar">
+                <img class="mask" src= "{{ asset('images') . '/' . Auth::user()->photo }}" alt="Photo">
+                <img class="border" src= "{{ asset('images/border-menu.png') }}" alt="border">
+            </figure>
+            <h3>{{ Auth::user()->fullname }}</h3>
+            <h4>{{ Auth::user()->role }}</h4>
+            <menu>
+                <a href="myProfile">
+                    <img src="images/ico-profile.svg" alt=""> Profile
+                </a>
+                <a href="../dashboard">
+                    <img src="images/ico-dashboard.svg" alt=""> Dashboard
+                </a>
+                <a href="javascript:;" onclick="logout.submit();">
+                    <img src=" {{ asset('../images/ico-logout.svg') }}" alt=""> LogOut
+                </a>
+                <form action=" {{ route('logout') }}" id="logout" method="POST">@csrf</form>
+            </menu>
+        </nav>
+    @endauth
 
     <section class="scroll">
         <div class="area">
             <a class="add" href="{{ url('users/create') }}">
-                <img src="{{ asset('images/tittles/+ add.png') }}" alt="Add">
+                <img src="{{ asset('images/tittles/add.png') }}" alt="Add">
             </a>
             <div class="options">
-                <a href="{{ url('export/users/pdf')}}">
+                <a href="{{ url('export/users/pdf') }}">
                     pdf
                 </a>
-                <a href="{{ url('export/users/excel')}}">
+                <a href="{{ url('export/users/excel') }}">
                     excel
                 </a>
 
                 <input name="qsearch" id="qsearch" type="text">
             </div>
-            ;extension=gd
+
 
             <div id="list">
                 @foreach ($users as $user)
                     <article class="record">
                         <figure class="avatar">
-                            <img class="mask" src="{{ $user->photo }}" alt="Photo">
+                            <img class="mask" src="{{ asset ('images').'/'.$user->photo }}" alt="Photo">
                             <img class="border" src="{{ asset('images/border-mask-card.png') }}" alt="border">
                         </figure>
                         <aside>
@@ -66,10 +68,10 @@
                             <h4>{{ $user->role }}</h4>
                         </aside>
                         <figure class="actions">
-                            <a href="{{ url('users/show') }}">
+                            <a href="{{ url ('users/'.$user->id) }}">
                                 <img src="../images/ico-view.svg" alt="viewUser">
                             </a>
-                            <a href="editUser.html">
+                            <a href="{{ url ('users/'.$user->id.'/edit') }}">
                                 <img src="../images/ico-edit.svg" alt="viewUser">
                             </a>
                             <a href="javascript:;" class="delete" data-fullname="{{ $user->fullname }}">

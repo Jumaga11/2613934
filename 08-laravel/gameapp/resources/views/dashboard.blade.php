@@ -18,7 +18,7 @@
 
     <nav class="nav">
         <figure class="avatar">
-            <img class="mask" src= "{{ $user->photo }}" alt="Photo">
+            <img class="mask" src= "{{ asset('images').'/'.$user->photo }}" alt="Photo">
             <img class="border" src="images/border-menu.png" alt="border">
         </figure>
         <h3>{{ $user->fullname }}</h3>
@@ -64,7 +64,7 @@
                 <h3>Module CATEGORIES</h3>
             </div>
             <div class="btn">
-                <a href="categories/categories.html">view</a>
+                <a href="{{ url('categories') }}">view</a>
             </div>
         </div>
 

@@ -20,7 +20,7 @@
 
 <nav class="nav">
     <figure class="avatar">
-        <img class="mask" src= "{{ $user->photo }}" alt="Photo">
+        <img class="mask" src= "{{ asset('images').'/'.$user->photo }}" alt="Photo">
         <img class="border" src="images/border-menu.png" alt="border">
     </figure>
     <h3>{{ $user->fullname }}</h3>
@@ -41,7 +41,7 @@
 
     <section>
         <figure class="avatar" >
-            <img class="mask" src="{{$user->photo}}" alt="Photo">
+            <img class="mask" src="{{ asset('images').'/'.$user->photo}}" alt="Photo">
             <img class="border" src="../images/border-menu.png" alt="border">
         </figure>
         <h2>{{$user->fullname}}</h2>

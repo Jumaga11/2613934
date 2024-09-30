@@ -52,11 +52,11 @@ class User extends Authenticatable
     }
 
     // Relationship: user has many games
-    public function games() {
+    public function games(){
         return $this -> hasMany('App\Models\Game');
     }
     // Relationship: user has many collections
-    public function collections() {
+    public function collections () {
         return $this -> hasMany('App\Models\Collection');
     }
 

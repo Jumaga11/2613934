@@ -24,12 +24,12 @@ class UserRequest extends FormRequest
     {
         if ($this->method() === 'PUT') {
             return [
-                'document'  => ['required', 'string', 'unique:users,document,'.$this->id],
-                'fullname'  => ['required', 'string', 'max:255'],
-                'gender'    => ['required', 'string', 'max:255'],
-                'birthdate' => ['required', 'date'],
-                'phone'     => ['required', 'string', 'max:255'],
-                'email'     => ['required', 'string', 'lowercase', 'email', 'unique:users,email,' .$this->id]
+                'document'  => 'required | string | unique:users,document,'.$this->id,
+                'fullname'  => 'required | string | max:255',
+                'gender'    => 'required | string | max:255',
+                'birthdate' => 'required | date',
+                'phone'     => 'required | string| max:255',
+                'email'     => 'required | string| lowercase | email | unique:users,email,' .$this->id
             ];
         } else {
             return [

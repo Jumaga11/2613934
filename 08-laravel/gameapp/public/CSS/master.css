@@ -1239,10 +1239,8 @@ main.myProfile {
                 background: url(../images/span.png) no-repeat center;
 
                 img {
-                    padding-left: 5px
+                    padding-left: 5px;
                 }
-
-                ;
 
                 b {
                     font-family: var(--ff-special);

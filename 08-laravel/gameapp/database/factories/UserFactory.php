@@ -37,7 +37,7 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password'          => static::$password ??= Hash::make('12345'),
             'remember_token'    => Str::random(10),
-            'photo'             => $this->faker->imageUrl(640, 280, 'people'),
+            'photo'             => $this->faker->image(public_path('images/'), 140, 140, null, false)
         ];
     }
 

@@ -16,8 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //$users = User::all();
-        $users  = User::paginate(20); // obtener el usuario autenticado
+        $users  = User::all();
+        //$users  = User::paginate(20); // obtener el usuario autenticado
         return view('users.index')->with('users', $users);
     }
 
@@ -32,12 +32,13 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(UserRequest $request)
+    public function store(Request $request)
     {
+
         //dd($request->all());
         if ($request->hasFile('photo')) {
             $photo = time() . '.' . $request->photo->extension();
-            $request->passesAuthorization->move(public_path('images'), $photo);
+            $request->photo->move(public_path('images'), $photo);
         }
 
         $user = new User;
@@ -52,13 +53,16 @@ class UserController extends Controller
 
         if ($user->save()) {
             return redirect('users')->with('message', 'the user: ' . $user->fullname . 'was succesfully added');
+        } else {
+            echo 'error';
+
         }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(User $user)
+    public function show(User $user )
     {
         //dd($user->toArray());
         return view('users.show')->with('user', $user);
@@ -75,7 +79,7 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UserRequest $request, User $user)
+    public function update(Request $request, User $user)
     {
         if ($request->hasFile('photo')) {
             $photo = time() . '.'.$request->photo->extension();
@@ -83,7 +87,6 @@ class UserController extends Controller
         } else {
             $photo = $request->originphoto;
         }
-
             $user->document  = $request->document;
             $user->fullname  = $request->fullname;
             $user->gender    = $request->gender;
@@ -122,6 +125,6 @@ class UserController extends Controller
 
     public function excel()
     {
-        return 'Excel';
+        return \Excel::download(new UserExport, 'allusers.xlsx');
     }
 }

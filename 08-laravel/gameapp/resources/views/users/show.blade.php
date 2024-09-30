@@ -5,10 +5,10 @@
 @section('content')
 
     <header>
-        <a href="users" class="btn-back">
+        <a href=" {{ url('users') }} " class="btn-back">
             <img src="{{ asset('../images/btn-back.svg') }}" alt="Back">
         </a>
-        <img src="{{ asset('../images/tittles/Show.png') }}" alt="logo" class="logo-top">
+        <img src="{{ asset('images/tittles/show-tittle.png') }}" alt="logo" class="logo-top">
         <svg class="btn-burger" viewBox="0 0 100 100" width="80">
             <path class="line top" d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20" />
             <path class="line middle" d="m 70,50 h -40" />
@@ -19,8 +19,8 @@
 
     <nav class="nav">
         <figure class="avatar">
-            <img class="mask" src= "{{ $user->photo }}" alt="Photo">
-            <img class="border" src="images/border-menu.png" alt="border">
+            <img class="mask" src= "{{ asset('images').'/'.$user->photo }}" alt="Photo">
+            <img class="border" src="images/border-menu.png" alt="">
         </figure>
         <h3>{{ $user->fullname }}</h3>
         <h4>{{ $user->role }}</h4>
@@ -40,7 +40,7 @@
 
     <section>
         <figure class="avatar">
-            <img class="mask" src="{{ $user->photo }}" alt="Photo">
+            <img class="mask" src="{{ asset('images').'/'.$user->photo }}" alt="Photo">
             <img class="border" src="../images/border-menu.png" alt="border">
         </figure>
         <h2>{{ $user->fullname }}</h2>
