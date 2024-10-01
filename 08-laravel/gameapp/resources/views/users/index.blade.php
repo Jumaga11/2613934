@@ -16,28 +16,33 @@
         </svg>
     </header>
 
-    @auth
-        <nav class="nav">
-            <figure class="avatar">
-                <img class="mask" src= "{{ asset('images') . '/' . Auth::user()->photo }}" alt="Photo">
-                <img class="border" src= "{{ asset('images/border-menu.png') }}" alt="border">
-            </figure>
-            <h3>{{ Auth::user()->fullname }}</h3>
-            <h4>{{ Auth::user()->role }}</h4>
-            <menu>
-                <a href="myProfile">
-                    <img src="images/ico-profile.svg" alt=""> Profile
-                </a>
-                <a href="../dashboard">
-                    <img src="images/ico-dashboard.svg" alt=""> Dashboard
-                </a>
-                <a href="javascript:;" onclick="logout.submit();">
-                    <img src=" {{ asset('../images/ico-logout.svg') }}" alt=""> LogOut
-                </a>
-                <form action=" {{ route('logout') }}" id="logout" method="POST">@csrf</form>
-            </menu>
-        </nav>
-    @endauth
+
+
+
+
+    <nav class="nav">
+        <figure class="avatar">
+            <img class="mask" src="{{ asset('images').'/'.Auth::user()->photo  }}" alt="Photo">
+            <img class="border" src="{{ asset('images/border-menu.png') }}" alt="border">
+        </figure>
+        <h3>{{ Auth::user()->fullname }}</h3>
+        <h4>{{ Auth::user()->role }}</h4>
+        <menu>
+            <a href="myProfile">
+                <img src="images/ico-profile.svg" alt=""> Profile
+            </a>
+            <a href="../dashboard">
+                <img src="images/ico-dashboard.svg" alt=""> Dashboard
+            </a>
+            <a href="javascript:;" onclick="logout.submit();">
+                <img src="{{ asset('images/ico-logout.svg') }}" alt=""> LogOut
+            </a>
+            <form action="{{ route('logout') }}" id="logout" method="POST">@csrf</form>
+        </menu>
+    </nav>
+
+
+
 
     <section class="scroll">
         <div class="area">
@@ -60,7 +65,7 @@
                 @foreach ($users as $user)
                     <article class="record">
                         <figure class="avatar">
-                            <img class="mask" src="{{ asset ('images').'/'.$user->photo }}" alt="Photo">
+                            <img class="mask" src="{{ asset('images') . '/' . $user->photo }}" alt="Photo">
                             <img class="border" src="{{ asset('images/border-mask-card.png') }}" alt="border">
                         </figure>
                         <aside>
@@ -68,10 +73,10 @@
                             <h4>{{ $user->role }}</h4>
                         </aside>
                         <figure class="actions">
-                            <a href="{{ url ('users/'.$user->id) }}">
+                            <a href="{{ url('users/' . $user->id) }}">
                                 <img src="../images/ico-view.svg" alt="viewUser">
                             </a>
-                            <a href="{{ url ('users/'.$user->id.'/edit') }}">
+                            <a href="{{ url('users/' . $user->id . '/edit') }}">
                                 <img src="../images/ico-edit.svg" alt="viewUser">
                             </a>
                             <a href="javascript:;" class="delete" data-fullname="{{ $user->fullname }}">
@@ -92,10 +97,14 @@
 @section('js')
     <script>
         //------------------------MENU HAMBURGUESA---------------
-        $('header').on('click', '.btn-burger', function() {
-            $(this).toggleClass('active')
-            $('.nav').toggleClass('active')
+        $(document).ready(function() {
+            $('header').on('click', '.btn-burger', function() {
+                $(this).toggleClass('active')
+                $('.nav').toggleClass('active')
+            })
+
         })
+        console.error();
         //--------------------------------------------------------
         $('figure').on('click', '.delete', function() {
             $fullname = $(this).attr('data-fullname')
@@ -104,9 +113,9 @@
                 text: "You want to eliminate: " + $fullname,
                 icon: "warning",
                 showCancelButton: true,
-                confirmButtonColor: "#ff5de2"
+                confirmButtonColor: "#bf7bffc7",
                 toast: true,
-                cancelButtonColor: "#ff5de2"
+                cancelButtonColor: "#bf7bffc7",
                 confirmButtonText: "Yes, delete it!"
             }).then((result) => {
                 if (result.isConfirmed) {

@@ -14,7 +14,7 @@ class CategoryController extends Controller{
      */
     public function index()
     {
-        $categories = Category::paginate(3);
+        $categories = Category::paginate();
         return view('categories.index')->with('categories', $categories);
     }
 
@@ -29,8 +29,7 @@ class CategoryController extends Controller{
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CategoryRequest $request)
-    {
+    public function store(Request $request, Category $category ){
         if ($request->hasFile('image')) {
             $photo = $request->file('image');
             $photoName = $request->file('image')->getClientOriginalName();
@@ -44,19 +43,16 @@ class CategoryController extends Controller{
             $photoName = 'categorie03.png';
         }
         $category = new Category;
-        $category->name = $request->name;
-        $category->image = $photoName;
+        $category->name         = $request->name;
+        $category->image        = $photoName;
         $category->manufacturer = $request->manufacturer;
-        $category->releasedate = $request->releasedate;
-        $category->description = $request->description;
-
-
+        $category->releasedate  = $request->releasedate;
+        $category->description  = $request->description;
         $category->save();
-
+        
         if($category->save()){
             return redirect('categories')->with('message', 'La categoría fue creada con éxito');
         }
-
         return redirect('categories')->with('message', 'No se pudo crear la categoría');
     }
 
@@ -90,11 +86,11 @@ class CategoryController extends Controller{
         } else {
             $photo = $request->originphoto;
         }
-        $category->image = $photo;
-        $category->name = $request->name;
+        $category->image        = $photo;
+        $category->name         = $request->name;
         $category->manufacturer = $request->manufacturer;
-        $category->releasedate = $request->releasedate;
-        $category->description = $request->description;
+        $category->releasedate  = $request->releasedate;
+        $category->description  = $request->description;
         $category->save();
 
         if($category->save()){

@@ -37,19 +37,6 @@
                 <form action=" {{ route('logout') }}" id="logout" method="POST">@csrf</form>
             </menu>
         </nav>
-        {{-- <nav class="nav">
-        <menu>
-            <a href="/register">
-                <img src="{{ asset('../images/ico-register.png') }}" alt=""> Register
-            </a>
-            <a href="/login">
-                <img src="{{ asset('../images/ico-login.png') }}" alt=""> Login
-            </a>
-            <a href="/catalogue">
-                <img src="{{ asset('../images/ico-catalogue.svg') }}" alt=""> Catalogue
-            </a>
-        </menu>
-    </nav> --}}
     @endauth
 
     <section class="scroll">

@@ -17,10 +17,11 @@ Route::get('catalogue', function () {
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware(['auth', 'verified']);
 
+Route::get('/myProfile', function () {
+    return view('myProfile', ['user'=>$user = User::where('id', auth()->id())->first()]);
+});
+
 Route::middleware('auth')->group(function () {
-    Route::get('/myProfile', function () {
-        return view('myProfile', ['user'=>$user = User::where('id', auth()->id())->first()]);
-    });
 
     Route::resources([
         'users' => UserController::class,
