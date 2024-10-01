@@ -89,7 +89,7 @@
                 <h3>Module GAMES</h3>
             </div>
             <div class="btn">
-                <a href="games.html">view</a>
+                <a href="{{ url('games') }}">view</a>
             </div>
         </div>
     </section>
