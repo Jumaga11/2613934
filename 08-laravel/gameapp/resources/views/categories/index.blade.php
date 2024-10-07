@@ -52,7 +52,7 @@
                 @foreach ($categories as $category)
                     <article class="record">
                         <figure class="avatar">
-                            <img class="mask" src="{{ asset('images/Categories-Pictures/PS5.png') }}" alt="Photo">
+                            <img class="mask" src="{{ asset('images').'/categories/'.$category->image }}" alt="Photo">
                             <img class="border" src="{{ asset('images/border-mask-card.png') }}" alt="border">
                         </figure>
                         <aside>
@@ -60,7 +60,7 @@
                             <h4>{{ $category->manufacturer }}</h4>
                         </aside>
                         <figure class="actions">
-                            <a href="{{ url('categories/show') }}">
+                            <a href="{{ url('categories/'.$category->id) }}">
                                 <img src="{{ asset('images/ico-view.svg') }}" alt="viewUser">
                             </a>
                             <a href="{{ url('categories/edit') }}">

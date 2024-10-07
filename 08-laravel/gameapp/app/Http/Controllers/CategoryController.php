@@ -40,7 +40,7 @@ class CategoryController extends Controller{
             // Mueve el archivo a la ruta de destino
             $photo->move($destinationPath, $photoName);
         } else {
-            $photoName = 'categorie03.png';
+            $photoName = 'no-image.png';
         }
         $category = new Category;
         $category->name         = $request->name;
@@ -49,7 +49,7 @@ class CategoryController extends Controller{
         $category->releasedate  = $request->releasedate;
         $category->description  = $request->description;
         $category->save();
-        
+
         if($category->save()){
             return redirect('categories')->with('message', 'La categoría fue creada con éxito');
         }
