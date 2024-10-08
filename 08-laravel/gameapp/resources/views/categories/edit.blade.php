@@ -22,8 +22,8 @@
                 <img class="mask" src= "{{ asset('images').'/'.Auth::user()->photo }}" alt="Photo">
                 <img class="border" src= "{{ asset('images/border-menu.png') }}" alt="border">
             </figure>
-            <h3>{{ Auth::user()->fullname }}</h3>
-            <h4>{{ Auth::user()->role }}</h4>
+            <h3> {{ Auth::user()->fullname }} </h3>
+            <h4> {{ Auth::user()->role }}     </h4>
             <menu>
                 <a href="myProfile">
                     <img src="images/ico-profile.svg" alt=""> Profile

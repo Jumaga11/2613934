@@ -672,6 +672,26 @@ main.editUser {
                 top: 30%;
             }
 
+            textarea {
+                height: 300px;
+                width: 300px;
+                border-radius: 15px;
+                border: none;
+                display: flex;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: -2px;
+                padding: 30px;
+                font-family: var(--ff-special);
+                font-size: 16px;
+                font-weight: 500;
+                font-style: italic;
+                letter-spacing: 1.5px;
+                transition: all 0.20s ease-in-out;
+                outline: none;
+                background-color: rgba(255, 255, 255, 0.05);
+            }
+
             input {
                 height: 60px;
                 width: 300px;
@@ -692,12 +712,12 @@ main.editUser {
                 background-color: rgba(255, 255, 255, 0.05);
             }
 
-            input::placeholder {
+            input,textarea::placeholder {
                 color: var(--cl-primary);
                 opacity: 30%;
             }
 
-            input:focus::placeholder {
+            input,textarea:focus::placeholder {
                 color: var(--cl-seventh);
             }
 
@@ -1341,6 +1361,25 @@ main.showUsers {
             box-shadow: 0 0 0.6em .25em var(--glow-color),
                 0 0 2.5em 2em var(--glow-spread-color),
                 inset 0 0 .5em .25em var(--glow-color);
+        }
+
+        div.options {
+            #qsearch {
+                border: none;
+                background: url(../images/bg-input-filter.png) no-repeat center / contain;
+                color: var(--cl-primary);
+                font-size: 20px;
+                font-family: var(--ff-heading);
+                height: 100px;
+                outline: none;
+                text-indent: 16px;
+                text-align: center;
+                width: px;
+                margin-top: -1rem;
+                &::placeholder {
+                    opacity: 0.5;
+                }
+            }
         }
 
         article.record {

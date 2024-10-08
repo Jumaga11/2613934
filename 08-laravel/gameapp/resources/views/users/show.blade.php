@@ -19,11 +19,11 @@
 
     <nav class="nav">
         <figure class="avatar">
-            <img class="mask" src= "{{ asset('images').'/'.$user->photo }}" alt="Photo">
+            <img class="mask" src= "{{ asset('images').'/'.Auth::user()->photo }}" alt="Photo">
             <img class="border" src="images/border-menu.png" alt="">
         </figure>
-        <h3>{{ $user->fullname }}</h3>
-        <h4>{{ $user->role }}</h4>
+        <h3>{{ Auth::user()->fullname }}</h3>
+        <h4>{{ Auth::user()->role }}</h4>
         <menu>
             <a href="myProfile">
                 <img src="images/ico-profile.svg" alt=""> Profile

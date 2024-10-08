@@ -16,10 +16,6 @@
         </svg>
     </header>
 
-
-
-
-
     <nav class="nav">
         <figure class="avatar">
             <img class="mask" src="{{ asset('images').'/'.Auth::user()->photo  }}" alt="Photo">
@@ -41,9 +37,6 @@
         </menu>
     </nav>
 
-
-
-
     <section class="scroll">
         <div class="area">
             <a class="add" href="{{ url('users/create') }}">
@@ -51,21 +44,19 @@
             </a>
             <div class="options">
                 <a href="{{ url('export/users/pdf') }}">
-                    pdf
+                    <img src="{{ asset('images/pdf-icon.svg') }}" style="height: 35px; margin-right:10px">
                 </a>
-                <a href="{{ url('export/users/excel') }}">
-                    excel
-                </a>
-
                 <input name="qsearch" id="qsearch" type="text">
+                <a href="{{ url('export/users/excel') }}">
+                    <img src="{{ asset('images/excel-icon.svg') }}" style="height: 35px; margin-left:10px">
+                </a>
             </div>
-
 
             <div id="list">
                 @foreach ($users as $user)
                     <article class="record">
                         <figure class="avatar">
-                            <img class="mask" src="{{ asset('images') . '/' . $user->photo }}" alt="Photo">
+                            <img class="mask" src="{{ asset('images').'/'.$user->photo }}" alt="Photo">
                             <img class="border" src="{{ asset('images/border-mask-card.png') }}" alt="border">
                         </figure>
                         <aside>
@@ -102,9 +93,8 @@
                 $(this).toggleClass('active')
                 $('.nav').toggleClass('active')
             })
-
         })
-        console.error();
+
         //--------------------------------------------------------
         $('figure').on('click', '.delete', function() {
             $fullname = $(this).attr('data-fullname')
@@ -137,7 +127,6 @@
                     $('#list').html(data)
                 }
             )
-            //console.log($(this).val())
         });
     </script>
 @endsection

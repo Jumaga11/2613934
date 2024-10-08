@@ -160,7 +160,7 @@
         });
 
         //CAMBIO DE COLOR DEL BOTON DE VIEW-EYE EN EL INPUT DE PASSWORD
-        /* $(document).ready(function() {
+        $(document).ready(function() {
             // Cambia el icono del ojo cuando el campo de entrada de la contraseña está enfocado
             $('.password-field input').focus(function() {
                 $('.ico-eye').attr('src','images/view-open2.svg');
@@ -181,7 +181,7 @@
                     $('.password-field input').attr('type', 'password');
                 }
             });
-        }); */
+        });
 
         //CAMBIO DE FOTO DE PERFIL
         $(document).ready(function() {

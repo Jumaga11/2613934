@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
         $user -> phone     = '123456789';
         $user -> email     = 'user@user.com';
         $user -> password  = bcrypt('admin');
-        $user -> role      = 'Administrator';
+        $user -> role      = 'Admin';
         $user -> save();
 
         $user = new User;
@@ -33,7 +33,7 @@ class UserSeeder extends Seeder
         $user -> phone     = '123456789';
         $user -> email     = 'Tecnolojuancho@live.com';
         $user -> password  = bcrypt('admin');
-        $user -> role      = 'Administrator';
+        $user -> role      = 'Admin';
         $user -> save();
 
         //Using DB Array

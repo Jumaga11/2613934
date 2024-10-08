@@ -44,11 +44,10 @@
 
             @csrf
             <div class="form-group">
-                <div class="border" style="background-image: url('images/border-photo.svg');">
+                <div class="border">
                     <div class="mask">
-                        
+                        <img src="{{ asset('images/categories') . '/' . $category->image }}" alt="Photo">
                     </div>
-                    <input id="photo" name="image" type="file">
                 </div>
             </div>
 
@@ -57,8 +56,15 @@
                     <img src="{{ asset('../images/icon-email.svg') }}" alt="">
                     <label for="name">Name:</label>
                 </h3>
-                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
-                    value="{{ $category->name }}" autofocus autocomplete="name" readonly />
+                <x-text-input
+                    id="name"
+                    class="block mt-1 w-full"
+                    type="text"
+                    name="name"
+                    value="{{ $category->name }}"
+                    autofocus autocomplete="name"
+                    readonly />
+
                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
             </div>
 
