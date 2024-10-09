@@ -23,18 +23,18 @@ class CategoryRequest extends FormRequest
     {
         if ($this->isMethod('put')) {
             return [
-                'name' => 'required|string',
+                'name'         => 'required|string',
                 'manufacturer' => 'required|string',
-                'releasedate' => 'required|date',
-                'description' => 'nullable|string',
+                'releasedate'  => 'required|date',
+                'description'  => 'nullable|string',
             ];
         } else {
             return [
-                'name' => 'required|string',
+                'name'         => 'required|string',
                 'manufacturer' => 'required|string',
-                'releasedate' => 'required|date',
-                'description' => 'nullable|string',
-                'image' => 'nullable|image',
+                'releasedate'  => 'required|date',
+                'description'  => 'nullable|string',
+                'image'        => 'nullable|image',
             ];
         }
     }

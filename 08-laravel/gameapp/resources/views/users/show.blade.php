@@ -17,26 +17,7 @@
         </svg>
     </header>
 
-    <nav class="nav">
-        <figure class="avatar">
-            <img class="mask" src= "{{ asset('images').'/'.Auth::user()->photo }}" alt="Photo">
-            <img class="border" src="images/border-menu.png" alt="">
-        </figure>
-        <h3>{{ Auth::user()->fullname }}</h3>
-        <h4>{{ Auth::user()->role }}</h4>
-        <menu>
-            <a href="myProfile">
-                <img src="images/ico-profile.svg" alt=""> Profile
-            </a>
-            <a href="../dashboard">
-                <img src="images/ico-dashboard.svg" alt=""> Dashboard
-            </a>
-            <a href="javascript:;" onclick="logout.submit();">
-                <img src=" {{ asset('../images/ico-logout.svg') }}" alt=""> LogOut
-            </a>
-            <form action=" {{ route('logout') }}" id="logout" method="POST">@csrf</form>
-        </menu>
-    </nav>
+    @include('menu')
 
     <section>
         <figure class="avatar">

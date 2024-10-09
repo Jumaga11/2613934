@@ -7,7 +7,7 @@
         <a href="{{ url('categories') }}" class="btn-back-2">
             <img src="{{ asset('images/btn-back.svg') }}" alt="Back">
         </a>
-        <img src="{{ asset('../images/tittles/add-tittle.png') }}" alt="">
+        <img src="{{ asset('../images/tittles/edit-tittle.png') }}" alt="">
         <svg class="btn-burger" viewBox="0 0 100 100" width="80">
             <path class="line top" d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20" />
             <path class="line middle" d="m 70,50 h -40" />
@@ -16,46 +16,31 @@
         </svg>
     </header>
 
-    @auth
-        <nav class="nav">
-            <figure class="avatar">
-                <img class="mask" src= "{{ asset('images').'/'.Auth::user()->photo }}" alt="Photo">
-                <img class="border" src= "{{ asset('images/border-menu.png') }}" alt="border">
-            </figure>
-            <h3> {{ Auth::user()->fullname }} </h3>
-            <h4> {{ Auth::user()->role }}     </h4>
-            <menu>
-                <a href="myProfile">
-                    <img src="images/ico-profile.svg" alt=""> Profile
-                </a>
-                <a href="../dashboard">
-                    <img src="images/ico-dashboard.svg" alt=""> Dashboard
-                </a>
-                <a href="javascript:;" onclick="logout.submit();">
-                    <img src=" {{ asset('../images/ico-logout.svg') }}" alt=""> LogOut
-                </a>
-                <form action=" {{ route('logout') }}" id="logout" method="POST">@csrf</form>
-            </menu>
-        </nav>
-    @endauth
+    @include('menu')
 
     <section class="scroll">
-        <form method="POST" action="{{ route('categories.store') }}" enctype="multipart/form-data">
-
+        <form method="POST" action="{{ url('categories/' . $category->id) }}" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
+
             <div class="form-group">
-                <div class="border" style="background-image: url('images/border-photo.svg');">
-                    <div class="mask"></div>
+                <div class="border" style="background-image: url('../../images/border-photo.svg')";>
+                    <div class="mask">
+                        <img src="{{ asset('images/categories' . $category->image) }}" alt="">
+                    </div>
                     <input id="photo" name="image" type="file">
+                    <input name="originphoto" type="hidden" value="{{ $category->image }}">
                 </div>
             </div>
+
+            
 
             <div>
                 <h3>
                     <img src="{{ asset('../images/icon-email.svg') }}" alt="">
                     <label for="name">Name:</label>
                 </h3>
-                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')"
+                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name', $category->name)"
                     required autofocus autocomplete="name" />
                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
             </div>
@@ -66,7 +51,7 @@
                     <x-input-label for="manufacturer" :value="__('Manufacturer')" />
                 </h3>
                 <x-text-input id="manufacturer" class="block mt-1 w-full" type="text" name="manufacturer"
-                    :value="old('manufacturer')" required autofocus autocomplete="manufacturer" />
+                    :value="old('manufacturer', $category->manufacturer)" required autofocus autocomplete="manufacturer" />
                 <x-input-error :messages="$errors->get('manufacturer')" class="mt-2" />
             </div>
 
@@ -75,7 +60,7 @@
                     <img src="{{ asset('../images/icon-user.svg') }}" alt="">
                     <x-input-label for="releasedate" :value="__('Releasedate')" />
                 </h3>
-                <x-text-input id="releasedate" class="block mt-1 w-full" type="text" name="releasedate" :value="old('releasedate')"
+                <x-text-input id="releasedate" class="block mt-1 w-full" type="text" name="releasedate" :value="old('releasedate', $category->releasedate)"
                     required autofocus autocomplete="releasedate" />
                 <x-input-error :messages="$errors->get('releasedate')" class="mt-2" />
             </div>
@@ -85,9 +70,9 @@
                     <img src="{{ asset('../images/icon-user.svg') }}" alt="">
                     <x-input-label for="description" :value="__('Description')" />
                 </h3>
-                <textarea id="description" class="block mt-1 w-full" type="text" name="description" :value="old('description')"
-                    required autofocus autocomplete="description"></textarea>
-                <x-input-error :messages="$errors->get('description')" class="mt-2"/>
+                <textarea id="description" class="block mt-1 w-full" type="text" name="description"
+                    :value="old('description', $category - > description)" required autofocus autocomplete="description"></textarea>
+                <x-input-error :messages="$errors->get('description')" class="mt-2" />
             </div>
 
             <button type="submit" class="btn-add">

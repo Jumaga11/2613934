@@ -17,21 +17,8 @@
         </svg>
     </header>
 
-    <nav class="nav">
-        <!--<img src="../images/tittle-menu.svg" alt="Menu" class="tittle-menu">-->
-        <menu>
-            <a href="/register">
-                <img src="../images/ico-register.png" alt=""> Register
-            </a>
-            <a href="/login">
-                <img src="../images/ico-login.png" alt="">
-                Login
-            </a>
-            <a href="/catalogue">
-                <img src="../images/ico-catalogue.svg" alt=""> Catalogue
-            </a>
-        </menu>
-    </nav>
+    @include('menu')
+
 
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />

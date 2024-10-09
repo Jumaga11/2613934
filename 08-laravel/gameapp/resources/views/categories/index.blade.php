@@ -16,28 +16,8 @@
         </svg>
     </header>
 
-    @auth
-        <nav class="nav">
-            <figure class="avatar">
-                <img class="mask" src= "{{ asset('images') . '/' . Auth::user()->photo }}" alt="Photo">
-                <img class="border" src= "{{ asset('images/border-menu.png') }}" alt="border">
-            </figure>
-            <h3>{{ Auth::user()->fullname }}</h3>
-            <h4>{{ Auth::user()->role }}</h4>
-            <menu>
-                <a href="myProfile">
-                    <img src="images/ico-profile.svg" alt=""> Profile
-                </a>
-                <a href="../dashboard">
-                    <img src="images/ico-dashboard.svg" alt=""> Dashboard
-                </a>
-                <a href="javascript:;" onclick="logout.submit();">
-                    <img src=" {{ asset('../images/ico-logout.svg') }}" alt=""> LogOut
-                </a>
-                <form action=" {{ route('logout') }}" id="logout" method="POST">@csrf</form>
-            </menu>
-        </nav>
-    @endauth
+    @include('menu')
+
     <section class="scroll">
         <div class="area">
             <a class="add" href="{{ url('categories/create') }}">
@@ -63,7 +43,7 @@
                             <a href="{{ url('categories/'.$category->id) }}">
                                 <img src="{{ asset('images/ico-view.svg') }}" alt="viewUser">
                             </a>
-                            <a href="{{ url('categories/edit') }}">
+                            <a href="{{ url('categories/'.$category->id.'/edit') }}">
                                 <img src="{{ asset('images/ico-edit.svg') }}" alt="viewUser">
                             </a>
                             <a href="javascript:;" class="delete" data-fullname="{{ $category->name }}">
@@ -120,7 +100,6 @@
                     $('#list').html(data);
                 }
             );
-            //console.log($(this).val());
         });
     </script>
 @endsection

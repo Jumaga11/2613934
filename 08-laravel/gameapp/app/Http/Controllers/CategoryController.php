@@ -82,7 +82,7 @@ class CategoryController extends Controller {
         if ($request->hasFile('image')) {
             if($request->hasFile('image')) {
                 $photo =time() . '.'.$request->image->extension();
-                $request->image->move(public_path('images'), $photo);
+                $request->image->move(public_path('images/categories'), $photo);
             }
         } else {
             $photo = $request->originphoto;
@@ -107,7 +107,6 @@ class CategoryController extends Controller {
         if($category->delete()) {
             return redirect('categories')->with('message', 'La categoría fue eliminada con éxito');
         }
-
         return redirect('categories')->with('message', 'No se pudo eliminar la categoría');
     }
 

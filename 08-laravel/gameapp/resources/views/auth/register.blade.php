@@ -16,19 +16,8 @@
         </svg>
     </header>
 
-    <nav class="nav">
-        <menu>
-            <a href="/register">
-                <img src="../images/ico-register.png" alt=""> Register
-            </a>
-            <a href="/login">
-                <img src="../images/ico-login.png" alt=""> Login
-            </a>
-            <a href="/catalogue">
-                <img src="../images/ico-catalogue.svg" alt=""> Catalogue
-            </a>
-        </menu>
-    </nav>
+    @include('menu')
+
 
     <section class="scroll">
         <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
