@@ -19,7 +19,6 @@ class Game extends Model {
         'releasedate',
         'category_id',
         'user_id',
-        'category_id',
         'price',
         'genre',
         'slider',

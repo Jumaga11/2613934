@@ -692,7 +692,8 @@ main.editUser {
                 background-color: rgba(255, 255, 255, 0.05);
             }
 
-            input {
+
+            select,input {
                 height: 60px;
                 width: 300px;
                 border-radius: 15px;
@@ -712,12 +713,12 @@ main.editUser {
                 background-color: rgba(255, 255, 255, 0.05);
             }
 
-            input,textarea::placeholder {
+            select,input,textarea::placeholder {
                 color: var(--cl-primary);
                 opacity: 30%;
             }
 
-            input,textarea:focus::placeholder {
+            select,input,textarea:focus::placeholder {
                 color: var(--cl-seventh);
             }
 

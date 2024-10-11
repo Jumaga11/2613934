@@ -87,6 +87,7 @@ class CategoryController extends Controller {
         } else {
             $photo = $request->originphoto;
         }
+
         $category->image        = $photo;
         $category->name         = $request->name;
         $category->manufacturer = $request->manufacturer;
@@ -104,13 +105,16 @@ class CategoryController extends Controller {
      * Remove the specified resource from storage.
      */
     public function destroy(Category $category) {
+
         if($category->delete()) {
+
             return redirect('categories')->with('message', 'La categoría fue eliminada con éxito');
         }
         return redirect('categories')->with('message', 'No se pudo eliminar la categoría');
     }
 
     public function search(Request $request) {
+
         $categories = Category::names($request->q)->paginate();
         return view('categories.search')->with('categories', $categories);
     }
