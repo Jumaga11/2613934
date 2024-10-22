@@ -24,11 +24,11 @@
                 <img src="{{ asset('images/tittles/add.png') }}" alt="Add">
             </a>
             <div class="options">
-                <a href="{{ url('export/users/pdf') }}">
+                <a href="{{ url('export/games/pdf') }}">
                     <img src="{{ asset('images/pdf-icon.svg') }}" style="height: 35px; margin-right:10px">
                 </a>
                 <input name="qsearch" id="qsearch" type="text">
-                <a href="{{ url('export/users/excel') }}">
+                <a href="{{ url('export/games/excel') }}">
                     <img src="{{ asset('images/excel-icon.svg') }}" style="height: 35px; margin-left:10px">
                 </a>
             </div>
@@ -52,7 +52,7 @@
                             <a href="{{ url('games/' . $game->id . '/edit') }}">
                                 <img src="../images/ico-edit.svg" alt="viewUser">
                             </a>
-                            <a href="javascript:;" class="delete" data-title="{{ $game->title }}">
+                            <a href="javascript:;" class="delete" data-title="{{ $game->tittle }}">
                                 <img src="../images/ico-delete.svg" alt="Delete">
                             </a>
                             <form action="{{ url('games/' . $game->id) }}" method="POST" style="display: none">

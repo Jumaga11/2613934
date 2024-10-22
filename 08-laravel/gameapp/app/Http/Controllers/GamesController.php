@@ -7,6 +7,8 @@ use App\Models\Category;
 use App\Http\Request\GamesRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Exports\GameExport;
+use PDF;
 
 class GamesController extends Controller {
     /**
@@ -61,8 +63,8 @@ class GamesController extends Controller {
      * Display the specified resource.
      */
     public function show(Game $game) {
-
-        return view('games.show')->with('game', $game);
+        $cats = Category::all();
+        return view('games.show')->with('game', $game)->with('cats', $cats);
 
     }
 
@@ -81,14 +83,14 @@ class GamesController extends Controller {
      * Update the specified resource in storage.
      */
     public function update(Request $request, Game $game) {
-        
+
         if ($request->hasFile('image')) {
             $photo = time() . '.' . $request->image->extension();
             $request->image->move(public_path('images'), $photo);
         } else {
             $photo = $request->originphoto;
         }
-        $game->title       = $request->title;
+        $game->tittle      = $request->tittle;
         $game->developer   = $request->developer;
         $game->releasedate = $request->releasedate;
         $game->category_id = $request->category_id;
@@ -107,6 +109,30 @@ class GamesController extends Controller {
      * Remove the specified resource from storage.
      */
     public function destroy(Game $game) {
-        //
+        if ($game->delete()) {
+            return redirect('games')->with('message', 'The game: ' . $game->tittle . 'was succesfully deleted!');
+        }
+    }
+
+    /**
+     * Function search
+     */
+    public function search(Request $request) {
+        $games = Game::names($request->q)->paginate(20);
+        return view('games.search')->with('games', $games);
+    }
+
+    /**
+     * Function PDF
+     */
+    public function pdf() {
+        $game = Game::all();
+        $pdf   = PDF::loadView('games.pdf', compact('game'));
+        return $pdf->download('allgames.pdf');
+    }
+
+    public function excel()
+    {
+        return \Excel::download(new GameExport, 'allgames.xlsx');
     }
 }

@@ -1,13 +1,13 @@
 @extends('layouts.app')
-@section('tittle', 'GameApp - Edit User')
+@section('tittle', 'GameApp - Edit Game')
 @section('class', 'editUser')
 
 @section('content')
     <header>
-        <a href="{{ url('users') }}" class="btn-back-2">
+        <a href="{{ url('games') }}" class="btn-back-2">
             <img src="{{ asset('images/btn-back.svg') }}" alt="Back">
         </a>
-        <img src="{{ asset('../images/tittles/add-tittle.png') }}" alt="">
+        <img src="{{ asset('../images/tittles/edit-tittle.png') }}" alt="">
         <svg class="btn-burger" viewBox="0 0 100 100" width="80">
             <path class="line top" d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20" />
             <path class="line middle" d="m 70,50 h -40" />
@@ -16,123 +16,107 @@
         </svg>
     </header>
 
-    <nav class="nav">
-        <menu>
-            <a href="/register">
-                <img src="{{ asset('../images/ico-register.png') }}" alt=""> Register
-            </a>
-            <a href="/login">
-                <img src="{{ asset('../images/ico-login.png') }}" alt=""> Login
-            </a>
-            <a href="/catalogue">
-                <img src="{{ asset('../images/ico-catalogue.svg') }}" alt=""> Catalogue
-            </a>
-        </menu>
-    </nav>
+    @include('menu')
 
     <section class="scroll">
-        <form method="POST" action="{{ url('users/' . $user->id) }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ url('games/' . $game->id) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="form-group">
                 <div class="border" style="background-image: url('images/border-photo.svg');">
                     <div class="mask"></div>
-                    <input id="photo" name="photo" type="file">
-                    <input type="hidden" name="originphoto" value="{{ $user->photo }}">
+                    <input id="photo" name="image" type="file">
+                    <input type="hidden" name="originphoto" value="{{ $game->image }}">
                 </div>
             </div>
 
             <div>
                 <h3>
                     <img src="{{ asset('../images/icon-email.svg') }}" alt="">
-                    <label for="document">Document:</label>
+                    <label for="tittle">Tittle</label>
                 </h3>
-                <x-text-input id="document" class="block mt-1 w-full" type="text" name="document" :value="old('document', $user->document)"
-                    required autofocus autocomplete="document" />
-                <x-input-error :messages="$errors->get('document')" class="mt-2" />
+                <x-text-input id="tittle" class="block mt-1 w-full" type="text" name="tittle" :value="old('tittle', $game->tittle)"
+                    required autofocus autocomplete="tittle" />
+                <x-input-error :messages="$errors->get('tittle')" class="mt-2" />
             </div>
 
             <div>
                 <h3>
                     <img src="{{ asset('../images/icon-user.svg') }}" alt="">
-                    <x-input-label for="fullname" :value="__('FullName')" />
+                    <x-input-label for="developer" :value="__('developer')" />
                 </h3>
-                <x-text-input id="fullname" class="block mt-1 w-full" type="text" name="fullname" :value="old('fullname', $user->fullname)"
-                    required autofocus autocomplete="fullname" />
-                <x-input-error :messages="$errors->get('fullname')" class="mt-2" />
+                <x-text-input id="developer" class="block mt-1 w-full" type="text" name="developer" :value="old('developer', $game->developer)"
+                    required autofocus autocomplete="developer" />
+                <x-input-error :messages="$errors->get('developer')" class="mt-2" />
             </div>
 
             <div>
                 <h3>
                     <img src="{{ asset('../images/icon-user.svg') }}" alt="">
-                    <x-input-label for="gender" :value="__('Gender')" />
+                    <x-input-label for="releasedate" :value="__('releasedate')" />
                 </h3>
-                <x-text-input id="gender" class="block mt-1 w-full" type="text" name="gender" :value="old('gender', $user->gender)"
-                    required autofocus autocomplete="gender" />
-                <x-input-error :messages="$errors->get('gender')" class="mt-2" />
+                <x-text-input id="releasedate" class="block mt-1 w-full" type="text" name="releasedate" :value="old('releasedate', $game->releasedate)"
+                    required autofocus autocomplete="releasedate" />
+                <x-input-error :messages="$errors->get('releasedate')" class="mt-2" />
             </div>
 
             <div>
                 <h3>
                     <img src="{{ asset('../images/ico-date.svg') }}" alt="">
-                    <x-input-label for="birthdate" :value="__('Birthdate')" />
+                    <x-input-label for="category_id" :value="__('category_id')" />
                 </h3>
-                <x-text-input id="birthdate" class="block mt-1 w-full" type="date" name="birthdate" :value="old('birthdate', $user->birthdate)"
-                    required autofocus autocomplete="birthdate" />
-                <x-input-error :messages="$errors->get('birthdate')" class="mt-2" />
+                <select name="category_id" value="{{ old('category_id') }}">
+                    @foreach ($cats as $cat)
+                        <option value="{{ $cat->id }}" @if (old('category_id') == $cat->id) selected @endif>
+                            {{ $cat->name }}
+                        </option>
+                    @endforeach
+                </select>
+                <x-input-error :messages="$errors->get('category_id')" class="mt-2" />
             </div>
 
             <div>
                 <h3>
                     <img src="{{ asset('../images/icon-phone.svg') }}" alt="">
-                    <x-input-label for="phone" :value="__('Phone')" />
+                    <x-input-label for="price" :value="__('Price')" />
                 </h3>
-                <x-text-input id="phone" class="block mt-1 w-full" type="text" name="phone" :value="old('phone', $user->phone)"
-                    required autofocus autocomplete="phone" />
-                <x-input-error :messages="$errors->get('phone')" class="mt-2" />
+                <x-text-input id="price" class="block mt-1 w-full" type="text" name="price" :value="old('price', $game->price)"
+                    required autofocus autocomplete="price" />
+                <x-input-error :messages="$errors->get('price')" class="mt-2" />
             </div>
 
-            {{-- <div>
-            <h3>
-                <img src="{{ asset('../images/icon-user.svg')}}" alt="">
-                <x-input-label for="role" :value="__('Role')" />
-            </h3>
-            <x-text-input id="role" class="block mt-1 w-full" type="text" name="role" :value="old('role')"
-                required autofocus autocomplete="role" />
-            <x-input-error :messages="$errors->get('role')" class="mt-2" />
-        </div> --}}
+            <div>
+                <h3>
+                    <img src="{{ asset('../images/icon-phone.svg') }}" alt="">
+                    <x-input-label for="genre" :value="__('genre')" />
+                </h3>
+                <x-text-input id="genre" class="block mt-1 w-full" type="text" name="genre" :value="old('genre')"
+                    required autofocus autocomplete="genre" />
+                <x-input-error :messages="$errors->get('genre')" class="mt-2" />
+            </div>
 
             <div>
                 <h3>
                     <img src="{{ asset('../images/icon-email.svg') }}" alt="">
-                    <x-input-label for="email" :value="__('Email')" />
+                    <x-input-label for="slider" :value="__('slider')" />
                 </h3>
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $user->email)"
-                    required autofocus autocomplete="email" />
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                <select name="slider">
+                    <option value="">Select...</option>
+                    <option value="0" @if (old('slider') == 1) selected @endif> <h3> Inactive </h3></option>
+                    <option value="1" @if (old('slider') == 0) selected @endif> <h3> Active </h3></option>
+                </select>
+                <x-input-error :messages="$errors->get('slider')" class="mt-2" />
             </div>
 
-            {{--  <div>
-            <h3>
-                <img src="{{ asset('images/icon-password.svg')}}" alt="">
-                <x-input-label for="password" :value="__('Password')" />
-            </h3>
-            <div class="password-field">
-                <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-                <img class="ico-eye" src="{{ asset('../images/view-open.svg')}}" />
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
+            <div>
+                <h3>
+                    <img src="{{ asset('../images/icon-user.svg') }}" alt="">
+                    <x-input-label for="description" :value="__('description')" />
+                </h3>
+                <textarea id="description" class="block mt-1 w-full" type="text" name="description" :value="old('description')"
+                    required autofocus autocomplete="description"></textarea>
+                <x-input-error :messages="$errors->get('description')" class="mt-2"/>
             </div>
-        </div>
-
-        <div>
-            <h3>
-                <img src="{{ asset('images/icon-password.svg')}}" alt="">
-                <x-input-label for="confirm_password" :value="__('Confirm Password')" />
-            </h3>
-            <div class="password-field">
-                <x-text-input id="confirm_password" class="block mt-1 w-full" type="password"  name="password_confirmation" required autocomplete="new-password" />
-            </div>
-        </div> --}}
 
             <button type="submit" class="btn-add">
                 <img src="{{ asset('images/tittles/save.png') }}" alt="btn-register">

@@ -7,7 +7,7 @@
         <a href="{{ url('games') }}" class="btn-back-2">
             <img src="{{ asset('images/btn-back.svg') }}" alt="Back">
         </a>
-        <img src="{{ asset('../images/tittles/add-tittle.png') }}" alt="">
+        <img src="{{ asset('../images/tittles/show-tittle.png') }}" alt="">
         <svg class="btn-burger" viewBox="0 0 100 100" width="80">
             <path class="line top" d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20" />
             <path class="line middle" d="m 70,50 h -40" />
@@ -19,22 +19,23 @@
     @include('menu')
 
     <section class="scroll">
-        <form method="POST" action="{{ route('games.store') }}" enctype="multipart/form-data">
-
+        <form method="POST" action="{{ url('games/' . $game->id) }}" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
             <div class="form-group">
                 <div class="border" style="background-image: url('images/border-photo.svg');">
                     <div class="mask"></div>
                     <input id="photo" name="image" type="file">
+                    <input type="hidden" name="originphoto" value="{{ $game->image }}">
                 </div>
             </div>
 
             <div>
                 <h3>
                     <img src="{{ asset('../images/icon-email.svg') }}" alt="">
-                    <label for="tittle">Tittle:</label>
+                    <label for="tittle">Tittle</label>
                 </h3>
-                <x-text-input id="tittle" class="block mt-1 w-full" type="text" name="tittle" :value="old('tittle')"
+                <x-text-input id="tittle" class="block mt-1 w-full" type="text" name="tittle" :value="old('tittle', $game->tittle)"
                     required autofocus autocomplete="tittle" />
                 <x-input-error :messages="$errors->get('tittle')" class="mt-2" />
             </div>
@@ -44,7 +45,7 @@
                     <img src="{{ asset('../images/icon-user.svg') }}" alt="">
                     <x-input-label for="developer" :value="__('developer')" />
                 </h3>
-                <x-text-input id="developer" class="block mt-1 w-full" type="text" name="developer" :value="old('developer')"
+                <x-text-input id="developer" class="block mt-1 w-full" type="text" name="developer" :value="old('developer', $game->developer)"
                     required autofocus autocomplete="developer" />
                 <x-input-error :messages="$errors->get('developer')" class="mt-2" />
             </div>
@@ -54,18 +55,32 @@
                     <img src="{{ asset('../images/icon-user.svg') }}" alt="">
                     <x-input-label for="releasedate" :value="__('releasedate')" />
                 </h3>
-                <x-text-input id="releasedate" class="block mt-1 w-full" type="date" name="releasedate" :value="old('releasedate')"
+                <x-text-input id="releasedate" class="block mt-1 w-full" type="text" name="releasedate" :value="old('releasedate', $game->releasedate)"
                     required autofocus autocomplete="releasedate" />
                 <x-input-error :messages="$errors->get('releasedate')" class="mt-2" />
             </div>
 
+            <div>
+                <h3>
+                    <img src="{{ asset('../images/ico-date.svg') }}" alt="">
+                    <x-input-label for="category_id" :value="__('category_id')" />
+                </h3>
+                <select name="category_id" value="{{ old('category_id') }}">
+                    @foreach ($cats as $cat)
+                        <option value="{{ $cat->id }}" @if (old('category_id') == $cat->id) selected @endif>
+                            {{ $cat->name }}
+                        </option>
+                    @endforeach
+                </select>
+                <x-input-error :messages="$errors->get('category_id')" class="mt-2" />
+            </div>
 
             <div>
                 <h3>
                     <img src="{{ asset('../images/icon-phone.svg') }}" alt="">
-                    <x-input-label for="price" :value="__('price')" />
+                    <x-input-label for="price" :value="__('Price')" />
                 </h3>
-                <x-text-input id="price" class="block mt-1 w-full" type="text" name="price" :value="old('price')"
+                <x-text-input id="price" class="block mt-1 w-full" type="text" name="price" :value="old('price', $game->price)"
                     required autofocus autocomplete="price" />
                 <x-input-error :messages="$errors->get('price')" class="mt-2" />
             </div>
@@ -79,7 +94,6 @@
                     required autofocus autocomplete="genre" />
                 <x-input-error :messages="$errors->get('genre')" class="mt-2" />
             </div>
-
 
             <div>
                 <h3>
@@ -105,7 +119,7 @@
             </div>
 
             <button type="submit" class="btn-add">
-                <img src="{{ asset('images/tittles/add.png') }}" alt="btn-register">
+                <img src="{{ asset('images/tittles/save.png') }}" alt="btn-register">
             </button>
         </form>
     </section>

@@ -35,10 +35,13 @@ Route::middleware('auth')->group(function () {
 // Search
 Route::post('users/search', [UserController::class, 'search']);
 Route::post('categories/search', [CategoryController::class, 'search']);
+Route::post('games/search', [GamesController::class, 'search']);
 
 // Export
 Route::get('export/users/pdf', [UserController::class, 'PDF']);
 Route::get('export/users/excel', [UserController::class, 'excel']);
+Route::get('export/games/pdf', [GamesController::class, 'PDF']);
+Route::get('export/games/excel', [GamesController::class, 'excel']);
 
 
 require __DIR__ . '/auth.php';

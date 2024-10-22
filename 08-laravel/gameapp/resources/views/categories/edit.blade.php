@@ -34,7 +34,6 @@
             </div>
 
             
-
             <div>
                 <h3>
                     <img src="{{ asset('../images/icon-email.svg') }}" alt="">

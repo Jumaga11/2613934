@@ -4,26 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>All users</title>
+    <title>All games</title>
 </head>
 
 <body>
     <table>
         <tr>
-            <th>ID</th>
-            <th>Full Name</th>
-            <th>Email</th>
-            <th>Rol</th>
-            <th>photo</th>
+            <th>title</th>
+            <th>developer</th>
+            <th>releasedate</th>
+            <th>category_id</th>
+            <th>genre</th>
+            <th>slider</th>
+            <th>description</th>
+            <th>image</th>
         </tr>
-        @foreach ($users as $user)
+        @foreach ($game as $game)
             <tr>
-                <td>{{ $user->id }}</td>
-                <td>{{ $user->fullname }}</td>
-                <td>{{ $user->email }}</td>
-                <td>{{ $user->role }}</td>
-                <td>{{ $user->photo }}</td>
-                <td><img src="{{ public_path().'/images/'.$user->photo}}" width="40px" alt=""></td>
+                <td>{{ $game->tittle }}</td>
+                <td>{{ $game->developer }}</td>
+                <td>{{ $game->releasedate }}</td>
+                <td>{{ $game->category_id }}</td>
+                <td>{{ $game->genre }}</td>
+                <td>{{ $game->slider }}</td>
+                <td>{{ $game->description }}</td>
+                <td>{{ $game->image }}</td>
+                <td><img src="{{ public_path().'/images/'.$game->image}}" width="40px" alt=""></td>
             </tr>
         @endforeach
     </table>
