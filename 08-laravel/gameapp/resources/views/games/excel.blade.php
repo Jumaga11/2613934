@@ -10,7 +10,6 @@
     <table>
         <tr>
         </tr>
-        @foreach ($game as $game)
         <tr>
             <th>title</th>
             <th>developer</th>
@@ -21,12 +20,11 @@
             <th>description</th>
             <th>image</th>
         </tr>
-        @foreach ($game as $game)
+        @foreach ($games as $game)
             <tr>
                 <td>{{ $game->tittle }}</td>
                 <td>{{ $game->developer }}</td>
                 <td>{{ $game->releasedate }}</td>
-                <td>{{ $game->category_id }}</td>
                 <td>{{ $game->genre }}</td>
                 <td>{{ $game->slider }}</td>
                 <td>{{ $game->description }}</td>
