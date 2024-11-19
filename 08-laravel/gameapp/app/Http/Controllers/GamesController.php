@@ -8,6 +8,7 @@ use App\Http\Request\GamesRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Exports\GameExport;
+use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 
 class GamesController extends Controller {
@@ -126,13 +127,13 @@ class GamesController extends Controller {
      * Function PDF
      */
     public function pdf() {
-        $game = Game::all();
+        $game  = Game::all();
         $pdf   = PDF::loadView('games.pdf', compact('game'));
         return $pdf->download('allgames.pdf');
     }
 
     public function excel()
     {
-        return \Excel::download(new GameExport, 'allgames.xlsx');
+        return Excel::download(new GameExport, 'allgames.xlsx');
     }
 }

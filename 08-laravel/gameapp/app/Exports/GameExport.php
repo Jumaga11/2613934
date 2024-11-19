@@ -2,12 +2,12 @@
 namespace App\Exports;
 
 use App\Models\Game;
-use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\WithColumnWidths;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
+
 class GameExport implements FromView, WithColumnWidths, WithStyles
 {
 public function view(): View

@@ -10,11 +10,23 @@ use Illuminate\Support\Facades\Route;
 use App\Models\User;
 
 Route::get('/', function () {
-    return view('welcome');
+
+    $sliders = App\Models\Game::where('slider', 1)->get();
+    return view('welcome')->with('sliders', $sliders);
 });
 
 Route::get('catalogue', function () {
-    return view('catalogue');
+
+    $categories = App\Models\Category::all();
+    $games      = App\Models\Game::all();
+    return view('catalogue')->with('categories', $categories)
+                            ->with('games', $games);
+});
+
+Route::get('catalogue/{id}', function () {
+
+    $game    = App\Models\Game::find(request()->id);
+    return view ('view-game')->with('game',$game);
 });
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware(['auth', 'verified']);
@@ -43,5 +55,7 @@ Route::get('export/users/excel', [UserController::class, 'excel']);
 Route::get('export/games/pdf', [GamesController::class, 'PDF']);
 Route::get('export/games/excel', [GamesController::class, 'excel']);
 
+// Import
+Route::post('import/users', [UserController::class, 'import']);
 
 require __DIR__ . '/auth.php';

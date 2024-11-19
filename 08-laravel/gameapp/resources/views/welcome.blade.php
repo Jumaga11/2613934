@@ -7,10 +7,11 @@
     <img src="images/logo.png" alt="logo">
 </header>
 <section class="slider owl-carousel owl-theme">
-    <img class="img-valhalla" src="{{ asset ('images/slide.png')}}" alt="slide01">
-    <img class="img-valhalla" src="{{ asset ('images/slide.png')}}" alt="slide01">
-    <img class="img-valhalla" src="{{ asset ('images/slide.png')}}" alt="slide01">
+    @foreach ($sliders as $slider)
+        <img class="img-valhalla" src="{{ asset ('images/'.$slider->image) }}" alt="{{ $slider->tittle }}">
+    @endforeach
 </section>
+
 <footer>
     <a href="{{asset('catalogue')}}" class="btn btn-explore">
         <img class="explore" src="images/content-btn-welcome.svg" alt="Explore">

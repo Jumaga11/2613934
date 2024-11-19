@@ -8,9 +8,9 @@ use App\Http\Requests\UserRequest;
 use PDF;
 use App\Exports\UserExport;
 use Barryvdh\DomPDF\PDF as DomPDFPDF;
+use App\Imports\UserImport;
 
-class UserController extends Controller
-{
+class UserController extends Controller {
     /**
      * Display a listing of the resource.
      */
@@ -80,7 +80,7 @@ class UserController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, User $user) {
-        
+
         if ($request->hasFile('photo')) {
             $photo = time() . '.'.$request->photo->extension();
             $request->photo->move(public_path('images'), $photo);
@@ -103,28 +103,30 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user)
-    {
+    public function destroy(User $user) {
         if ($user->delete()) {
             return redirect('users')->with('message', 'The user: ' . $user->fullname . ' was succesfully deleted!');
         }
     }
 
-    public function search(Request $request)
-    {
+    public function search(Request $request) {
         $users = User::names($request->q)->paginate(20);
         return view('users.search')->with('users', $users);
     }
 
-    public function pdf()
-    {
+    public function pdf() {
         $users = User::all();
         $pdf   = PDF::loadView('users.pdf', compact('users'));
         return $pdf->download('allusers.pdf');
     }
 
-    public function excel()
-    {
+    public function excel() {
         return \Excel::download(new UserExport, 'allusers.xlsx');
+    }
+
+    public function import( Request $request ) {
+        $file = $request->file('file');
+        \Excel::import(new UserImport, $file);
+        return redirect()->back()->with('message', 'Users importer succesful!');
     }
 }
