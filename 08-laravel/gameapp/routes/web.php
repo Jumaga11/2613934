@@ -24,15 +24,14 @@ Route::get('catalogue', function () {
 });
 
 Route::get('catalogue/{id}', function () {
-
     $game    = App\Models\Game::find(request()->id);
-    return view ('view-game')->with('game',$game);
+    return view('view-game')->with('game', $game);
 });
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware(['auth', 'verified']);
 
 Route::get('/myProfile', function () {
-    return view('myProfile', ['user'=>$user = User::where('id', auth()->id())->first()]);
+    return view('myProfile', ['user' => $user = User::where('id', auth()->id())->first()]);
 });
 
 Route::middleware('auth')->group(function () {
