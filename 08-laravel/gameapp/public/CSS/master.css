@@ -497,6 +497,11 @@ main.viewGame {
         justify-content: center;
         gap: 1rem;
 
+        img.card {
+            height: 250px;
+            width: 250px;
+        }
+
         article {
             width: 251px;
             gap: 1rem;
@@ -544,7 +549,6 @@ main.viewGame {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                margin-top: 10px;
                 transition: all 0.15s ease-in;
                 width: 300px;
 
@@ -564,6 +568,11 @@ main.viewGame {
                 box-shadow: 0 0 0.6em .25em var(--glow-color),
                     0 0 2.5em 2em var(--glow-spread-color),
                     inset 0 0 .5em .25em var(--glow-color);
+            }
+
+            a.not-allowed {
+                pointer-events: none;
+                opacity: 0.5;
             }
         }
     }

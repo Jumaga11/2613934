@@ -34,8 +34,17 @@
 
     <section class="scroll">
         <form action="" method="POST">
-            <input type="text" placeholder="Filter" maxlength="18">
+            @csrf
+            <input type="text" id="fcat" list="lcat" placeholder="Filter" maxlength="18">
+            <datalist id="lcat">
+                <option value="All"></option>
+                @foreach ($categories as $category)
+                    <option value="{{ $category->name }}">
+                @endforeach
+            </datalist>
         </form>
+
+        <div class="loader hidden"></div>
 
         <div id="content">
             @foreach ($categories as $category)
@@ -46,31 +55,21 @@
                             {{ $category->name }}
                         </h2>
                         <div class="slider owl-carousel owl-theme">
-                            <a href="view-game.html">
-                                <figure>
-                                    <img src="../images/slide-c1-01.png" alt="" class="slide">
-                                    <figcaption>God of war</figcaption>
-                                </figure>
-                            </a>
-                            <a href="view-game.html">
-                                <figure>
-                                    <img src="../images/slide-c1-02.png" alt="" class="slide">
-                                    <figcaption>Crash bandicoot</figcaption>
-                                </figure>
-                            </a>
-                            <a href="view-game.html">
-                                <figure>
-                                    <img src="../images/slide-c1-03.png" alt="" class="slide">
-                                    <figcaption>Red Redemption</figcaption>
-                                </figure>
-                            </a>
+                            @foreach ($games as $game)
+                                @if ($category->id == $game->category_id)
+                                    <a href=" {{ url('catalogue/' . $game->id) }} ">
+                                        <figure>
+                                            <img src=" {{ asset('images/' . $game->image) }}" alt="" class="slide">
+                                            <figcaption> {{ Str::words($game->tittle, 2, '...') }} </figcaption>
+                                        </figure>
+                                    </a>
+                                @endif
+                            @endforeach
                         </div>
                     </article>
                 @endif
             @endforeach
         </div>
-
-
     </section>
 
 @endsection
@@ -96,6 +95,41 @@
             $('header').on('click', '.btn-burger', function() {
                 $(this).toggleClass('active')
                 $('.nav').toggleClass('active')
+            })
+
+            /*-------------------------------------------------------------
+            -                           FILTRAR                           -
+            --------------------------------------------------------------*/
+            $('body').on('change', '#fcat', function(event) {
+                event.preventDefault()
+                $fcat = $(this).val()
+                $tk = $('input[name="_token"]').val()
+                $('.loader').removeClass('hidden')
+                $('#content').hide()
+                $sto = setTimeout(() => {
+                    clearTimeout($sto)
+                    $.post("gamesbycat", {
+                            fcat: $fcat,
+                            _token: $tk
+                        },
+                        function(data) {
+                            $('.loader').removeClass('hidden')
+                            $('#content').html(data).fadeIn('slow')
+                            $('.owl-carousel').owlCarousel({
+                                center: false,
+                                loop: true,
+                                margin: -50,
+                                dots: false,
+                                nav: false,
+                                responsive: {
+                                    0: {
+                                        items: 2
+                                    }
+                                }
+                            })
+                        }
+                    );
+                }, 1500)
             })
         })
     </script>
